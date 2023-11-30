@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
@@ -23,10 +23,8 @@ export class UserService {
 
     return this.http.post('http://localhost:8080/api/user', body).subscribe({
       next: res => {
-        console.log(res)
       },
       error: err => {
-        console.log(err);
       }
     });
   }
