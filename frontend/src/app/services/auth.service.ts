@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from './user.service';
+import { Observable } from 'rxjs';
+import firebase from 'firebase/compat';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
+  constructor(private afAuth: AngularFireAuth, private userService: UserService) {}
 
   async signUp(email: string, password: string){
 
@@ -26,7 +28,7 @@ export class AuthService {
     return this.afAuth.signOut();
   }
 
-  getCurrentUser() {
+  getCurrentUser(): Observable<firebase.User | null> {
     return this.afAuth.authState;
   }
 
