@@ -30,7 +30,6 @@ export class LoginPage{
     try {
       await this.authService.signUp(this.registerEmail, this.registerPassword);
       console.log("Registered successfully!");
-      // Redirect or do additional tasks like sending verification email
     } catch (error) {
       console.error("Error during registration", error);
     }
