@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import firebase from 'firebase/compat';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  styleUrls: ['tab1.page.scss'],
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
+  isLoggedIn: boolean = false;
+  currentUser: firebase.User | null = null;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.isLoggedIn().subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    })
+  }
 
+  ngOnInit(): void {
+    this.authService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+      console.log(this.currentUser)
+    });
+  }
+
+  logOut(){
+    this.authService.signOut().then(() => {
+    })
+  }
 }
