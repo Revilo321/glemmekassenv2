@@ -1,8 +1,8 @@
-<div>
+<ion-content>
   <form (submit)="login()">
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
-    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
-    <button type="submit">Login</button>
+    <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email" class="test" required/>
+    <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password" required/>
+    <ion-button type="submit">Login</ion-button>
   </form>
   
   <form (submit)="register()">
@@ -10,4 +10,4 @@
     <input type="password" [(ngModel)]="registerPassword" name="password" placeholder="Password" required>
     <button type="submit">Register</button>
   </form>
-</div>
+</ion-content>

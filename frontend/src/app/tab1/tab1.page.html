@@ -1,18 +1,7 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-text *ngIf="currentUser">currentuser email: {{currentUser.email}}</ion-text>
   <ion-button>
     {{isLoggedIn ? 'Tilføj ting' : 'Du blever bedt om at logge ind når du trykker på den her knap'}}
-  </ion-button>
-  <ion-button *ngIf="isLoggedIn" (click)="logOut()">
-    Log ud
   </ion-button>
   <ion-header collapse="condense">
     <ion-toolbar>
