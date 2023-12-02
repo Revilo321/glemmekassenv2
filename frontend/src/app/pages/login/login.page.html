@@ -1,13 +1,4 @@
 <ion-content>
-  <form (submit)="login()">
-    <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email" class="test" required/>
-    <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password" required/>
-    <ion-button type="submit">Login</ion-button>
-  </form>
-  
-  <form (submit)="register()">
-    <input type="email" [(ngModel)]="registerEmail" name="email" placeholder="Email" required>
-    <input type="password" [(ngModel)]="registerPassword" name="password" placeholder="Password" required>
-    <button type="submit">Register</button>
-  </form>
+  <app-login-component (loggedIn)="handleLogin($event)"/>
+  <app-register (registered)="handleRegister($event)"/>
 </ion-content>

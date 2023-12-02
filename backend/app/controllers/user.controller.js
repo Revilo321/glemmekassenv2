@@ -3,9 +3,9 @@ const User = db.user
 
 exports.create = (req, res) => {
   console.log(req.body)
-  const { uid, email, username } = req.body
+  const { uid, email, name, phone, age, zipcode, city } = req.body
 
-  User.create({ uid, email, username })
+  User.create({ uid, email, name, phone, age, zipcode, city })
     .then((data) => {
       res.send(data)
     })
