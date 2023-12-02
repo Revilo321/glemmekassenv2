@@ -1,0 +1,35 @@
+<!-- src/app/chat/chat.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- The *ngFor directive would loop over a messages array in your TypeScript code -->
+    <ion-item *ngFor="let message of messages">
+      <ion-avatar slot="start">
+        <img [src]="message.avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ message.name }}</h2>
+        <p>{{ message.text }}</p>
+      </ion-label>
+      <ion-note slot="end">{{ message.time }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <ion-input type="text" placeholder="Type a message..." [(ngModel)]="messageContent"></ion-input>
+      <ion-buttons slot="end">
+        <ion-button (click)="sendMessage()">
+          <ion-icon slot="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

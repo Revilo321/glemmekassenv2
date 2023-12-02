@@ -25,7 +25,7 @@ export class TabsPage {
   }
 
   navigateToMessages(){
-    this.router.navigate(['tabs/messages'])
+    this.router.navigate(['tabs/chat-overview'])
   }
 
 }

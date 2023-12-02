@@ -18,6 +18,9 @@ export class LoginComponent {
   async login() {
     try {
       await this.authService.signIn(this.email, this.password);
+      this.authService.getCurrentUser().subscribe((user) => {
+        console.log("run?")
+      })
       this.router.navigate(['tabs/tab1'])
     } catch (error) {
       this.loggedIn.emit('Noget gik galt, prøv at logge ind igen!')

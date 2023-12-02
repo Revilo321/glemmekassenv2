@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MessagesPageRoutingModule } from './messages-routing.module';
+import { ChatOverviewPageRoutingModule } from './chat-overview-routing.module';
 
-import { MessagesPage } from './messages.page';
+import { ChatOverviewPage } from './chat-overview.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    MessagesPageRoutingModule,
+    ChatOverviewPageRoutingModule,
     SharedModule
   ],
-  declarations: [MessagesPage]
+  declarations: [ChatOverviewPage]
 })
-export class MessagesPageModule {}
+export class ChatOverviewPageModule {}
