@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from './user.service';
 import { Observable, map } from 'rxjs';
 import firebase from 'firebase/compat';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,12 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private userService: UserService) {}
 
-  async signUp(email: string, password: string){
+  async signUp(formValues: any){
     try {
-      await this.afAuth.createUserWithEmailAndPassword(email, password);
-      await this.userService.registerUserInBackend();
+      await this.afAuth.createUserWithEmailAndPassword(formValues.email, formValues.password);
+      const userData = {...formValues}
+      delete userData.password;
+      await this.userService.registerUserInBackend(userData);
     } catch (err: any) {
       throw new Error('Registration failed' + err.message);
     }

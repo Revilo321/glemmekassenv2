@@ -4,12 +4,25 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       primaryKey: true,
     },
-    username: {
+    name: {
       type: Sequelize.STRING,
     },
     email: {
       type: Sequelize.STRING,
     },
+    phone: {
+      type: Sequelize.STRING,
+    },
+    age: {
+      type: Sequelize.INTEGER,
+    },
+    zipcode: {
+      type: Sequelize.INTEGER,
+    },
+    city: {
+      type: Sequelize.STRING,
+    }
+
   })
 
   return user

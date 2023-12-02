@@ -1,0 +1,12 @@
+<ion-text class="ion-text-center ion-padding">
+  <p>
+    Har du ikke en bruger, kan du oprette dig som bruger her!
+  </p>
+</ion-text>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="form-group">
+      <ion-input *ngFor="let field of inputFields" [helperText]="field.helperText ? field.helperText : null" [errorText]="getErrorMessage(field.controlName)" [label]="field.label" labelPlacement="floating" [type]="field.type" [formControlName]="field.controlName" [placeholder]="field.placeholder"></ion-input>
+  </div>
+  <ion-button expand="block" size="small" color="secondary" type="submit">Opret bruger</ion-button>
+</form>

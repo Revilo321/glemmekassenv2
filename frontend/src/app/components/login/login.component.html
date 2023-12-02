@@ -1,0 +1,32 @@
+<ion-text class="ion-text-center">
+  <h1>Login</h1>
+</ion-text>
+<form (submit)="login()">
+  <div class="fields-container">
+    <div class="login-fields">
+      <ion-icon name="mail-outline" />
+      <ion-input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Email"
+        class="test"
+        required
+      >
+      </ion-input>
+    </div>
+    <div class="login-fields">
+      <ion-icon name="lock-open-outline" />
+      <ion-input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Adgangskode"
+        required
+      />
+    </div>
+  </div>
+  <ion-button color="secondary" size="small" expand="block" type="submit">
+    Log ind
+  </ion-button>
+</form>

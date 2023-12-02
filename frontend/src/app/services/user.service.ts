@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private http: HttpClient, private afAuth: AngularFireAuth) { }
 
-  async registerUserInBackend() {
+  async registerUserInBackend(userData: any) {
     const user = await this.afAuth.currentUser;
     if (!user) {
       throw new Error('No user logged in');
@@ -17,8 +17,12 @@ export class UserService {
 
     const body = {
       uid: user.uid,
-      email: user.email,
-      username: 'Test'
+      email: userData.email,
+      name: userData.name,
+      phone: userData.phone,
+      age: +userData.age,
+      zipcode: +userData.zipcode,
+      city: userData.city
     };
 
     return this.http.post('http://localhost:8080/api/user', body).subscribe({
