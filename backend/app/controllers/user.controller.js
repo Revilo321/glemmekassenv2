@@ -54,7 +54,10 @@ exports.findChats = (req, res) => {
     group: ['User.uid']
   })
   .then(users => {
-    res.send(users);
+    const filteredUsers = users.filter(user => user.ReceivedMessages.length > 0 || user.SentMessages.length > 0);
+    
+    console.log(filteredUsers);
+    res.send(filteredUsers);
   })
   .catch(error => {
     console.error('Error fetching chat overview:', error);

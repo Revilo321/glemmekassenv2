@@ -1,3 +1,6 @@
+const db = require('../models')
+const User = db.user;
+
 module.exports = (sequelize, Sequelize) => {
     const message = sequelize.define('message', {
         id: {
@@ -25,6 +28,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         }
     });
-  
+
     return message;
   };
