@@ -21,7 +21,6 @@ export class Tab1Page implements OnInit {
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe((user) => {
       this.currentUser = user;
-      console.log(this.currentUser)
     });
   }
 

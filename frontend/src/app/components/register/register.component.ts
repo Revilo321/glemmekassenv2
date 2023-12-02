@@ -88,7 +88,6 @@ export class RegisterComponent {
 
   getErrorMessage(controlName: string): string {
     const control = this.registerForm.get(controlName);
-    console.log(control)
     if (control && control.errors) {
       for (const error of this.formErrorMessages[controlName]) {
         if (control.hasError(error.type)) {

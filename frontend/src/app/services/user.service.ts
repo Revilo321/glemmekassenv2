@@ -24,7 +24,7 @@ export class UserService {
       zipcode: +userData.zipcode,
       city: userData.city
     };
-    console.log(body)
+
     return this.http.post('http://localhost:8080/api/user', body).subscribe({
       next: res => {
       },
