@@ -1,14 +1,33 @@
 <ion-content>
+  <div *ngIf="isLoading; else chatOverview" class="skeleton-container">
   <ion-list>
-    <ion-item class="ion-no-padding" *ngFor="let chat of chats" (click)="openChat(chat.uid)">
+    <ion-item class="ion-no-padding">
       <ion-avatar slot="start">
-        <img src="https://ionicframework.com/docs/img/demos/avatar.svg">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
       </ion-avatar>
       <ion-label>
-        <h2>{{ chat.name }}</h2>
-        <p>{{ chat.latestMessageText }}</p>
+        <h1>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </h1>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
       </ion-label>
-      <ion-note slot="end">{{ chat.latestMessageCreatedAt | date: 'HH:mm' }}</ion-note>
     </ion-item>
   </ion-list>
+</div>
+  <ng-template #chatOverview>
+    <ion-list>
+      <ion-item class="ion-no-padding" *ngFor="let chat of chats" (click)="openChat(chat.uid)">
+        <ion-avatar slot="start">
+          <img src="https://ionicframework.com/docs/img/demos/avatar.svg">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ chat.name }}</h2>
+          <p>{{ chat.latestMessageText }}</p>
+        </ion-label>
+        <ion-note slot="end">{{ chat.latestMessageCreatedAt | date: 'HH:mm' }}</ion-note>
+      </ion-item>
+    </ion-list>
+  </ng-template>
 </ion-content>

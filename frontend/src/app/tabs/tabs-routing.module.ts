@@ -36,6 +36,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/chat-overview/chat-overview.module').then(m => m.ChatOverviewPageModule)
       },
       {
+        path: 'messages/:id',
+        loadChildren: () => import('../pages/messages/messages.module').then(m => m.MessagesPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

@@ -9,11 +9,12 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./chat-overview.page.scss'],
 })
 export class ChatOverviewPage {
+  isLoading: boolean = true;
   chats: any[] = [];
 
   constructor(private chatService: ChatService, private authService: AuthService, private router: Router) { }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.authService.getCurrentUser().subscribe((user) => {
       this.getChats(user?.uid!);
     })
@@ -47,7 +48,7 @@ export class ChatOverviewPage {
             lastMessageText = user.ReceivedMessages[0].latestMessageText;
             lastMessageCreatedAt = user.ReceivedMessages[0].latestMessageCreatedAt;
           }
-  
+          this.isLoading = false;
           return {
             name: user.name,
             uid: user.uid,
@@ -66,7 +67,7 @@ export class ChatOverviewPage {
   }
 
   openChat(otherUserUid: string) {
-    this.router.navigate(['/messages', otherUserUid]); // Replace with your actual route
+    this.router.navigate(['/tabs/messages', otherUserUid]); // Replace with your actual route
   }
 
 }

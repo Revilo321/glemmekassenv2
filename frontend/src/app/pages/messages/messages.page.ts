@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonContent } from '@ionic/angular';
+import { IonContent, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { SocketService } from 'src/app/services/socket.service';
@@ -20,12 +20,29 @@ export class MessagesPage implements OnInit {
   otherUserFirebaseUid: string = '';
   currentUserFirebaseUid: string = '';
 
+  showOrHideTabs(style: string) {
+    const tabBar = document.getElementById('app-tab-bar');
+    const fabButton = document.getElementById('chat-fab');
+    if(tabBar !== null && fabButton !== null){
+      tabBar.style.display = style;
+      fabButton.style.display = style;
+    }
+  }
+
+  ionViewDidEnter() {
+    this.showOrHideTabs('none');
+  }
+
+  ionViewWillLeave() {
+    this.showOrHideTabs('flex');
+  }
+
   constructor(
     private socketService: SocketService,
     private route: ActivatedRoute,
     private authService: AuthService,
     private chatService: ChatService,
-    private userService: UserService
+    private userService: UserService,
   ) {}
   ngOnInit() {
     this.isLoading = true;
@@ -39,7 +56,6 @@ export class MessagesPage implements OnInit {
     });
     this.socketService.onConnect.subscribe(() => {
       this.socketService.onNewMessage((message: any) => {
-        console.log(message);
         if (!message.senderName) {
           this.userService
             .getUserName(this.otherUserFirebaseUid)
