@@ -8,12 +8,12 @@ import { ChatService } from 'src/app/services/chat.service';
   templateUrl: './chat-overview.page.html',
   styleUrls: ['./chat-overview.page.scss'],
 })
-export class ChatOverviewPage implements OnInit {
+export class ChatOverviewPage {
   chats: any[] = [];
 
   constructor(private chatService: ChatService, private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.authService.getCurrentUser().subscribe((user) => {
       this.getChats(user?.uid!);
     })

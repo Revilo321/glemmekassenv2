@@ -55,9 +55,6 @@ export class MessagesPage implements OnInit {
     });
     this.scrollToBottom(2000);
   }
-  ngOnDestroy() {
-    this.socketService.onConnect.unsubscribe();
-  }
 
   sendMessage() {
     if (this.messageContent.trim()) {

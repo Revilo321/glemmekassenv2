@@ -1,3 +1,11 @@
+ion-header{
+  --background-color: transparent;
+}
+ion-toolbar {
+  --background-color: transparent;
+  --ion-color-base: transparent !important;
+}
+
 .chat-container {
     display: flex;
     flex-direction: column;
