@@ -5,12 +5,11 @@ import { IonicModule } from '@ionic/angular';
 import { LoginComponent } from '../components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from '../components/register/register.component';
-import { ChatMessagesComponent } from '../components/chat-messages/chat-messages.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent, RegisterComponent, ChatMessagesComponent],
+  declarations: [HeaderComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     IonicModule,
@@ -21,7 +20,6 @@ import { ChatMessagesComponent } from '../components/chat-messages/chat-messages
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    ChatMessagesComponent
   ]
 })
 export class SharedModule { }

@@ -23,32 +23,29 @@ db.sequelize.sync();
 const users = {};
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
 
-  // Store the user's Firebase UID and their socket ID
   socket.on('register', userFirebaseUID => {
     users[userFirebaseUID] = socket.id;
-    console.log(users);
   });
 
   socket.on('new-message', async (data) => {
-    console.log(data)
     try {
-      const { message, senderId, receiverId } = data;
+      const { message } = data;
 
-      // Save the message to the database
-      const newMessage = await db.message.create({
-        text: message,
-        senderId: senderId,
-        receiverId: receiverId,
+      await db.message.create({
+        text: message.text,
+        senderId: message.senderId,
+        receiverId: message.receiverId,
       });
 
-      // Emit the message to the specific receiver if they are online
-      console.log("users",users)
-      const receiverSocketId = users[receiverId];
+      const receiverSocketId = users[message.receiverId];
       if (receiverSocketId) {
-        console.log("receiver socket",receiverSocketId, newMessage)
-        io.to(receiverSocketId).emit('new-message', newMessage);
+        io.to(receiverSocketId).emit('new-message', {
+          text: message.text,
+          senderId: message.senderId,
+          receiverId: message.receiverId,
+          time: message.time
+        });
       }
     } catch (error) {
       console.error('Error saving message: ', error);
@@ -56,13 +53,11 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    // Remove the user's Firebase UID from the users object
     Object.keys(users).forEach(uid => {
       if (users[uid] === socket.id) {
         delete users[uid];
       }
     });
-    console.log('user disconnected');
   });
 });
 
@@ -88,6 +83,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./app/routes/user.routes")(app);
+require("./app/routes/messages.routes")(app);
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to code squad" });

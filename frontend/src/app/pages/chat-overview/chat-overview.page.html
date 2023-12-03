@@ -1,5 +1,14 @@
-<!-- chat-overview.component.html -->
-<div *ngFor="let chat of chats">
-    <h3>{{ chat.name }}</h3>
-    <p>Last message: {{ chat.latestMessageText }}</p>
-  </div>
+<ion-content>
+  <ion-list>
+    <ion-item class="ion-no-padding" *ngFor="let chat of chats" (click)="openChat(chat.uid)">
+      <ion-avatar slot="start">
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ chat.name }}</h2>
+        <p>{{ chat.latestMessageText }}</p>
+      </ion-label>
+      <ion-note slot="end">{{ chat.latestMessageCreatedAt | date: 'HH:mm' }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

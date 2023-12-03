@@ -18,6 +18,10 @@ export class ChatService {
     return this.http.get(`${this.endpoint}/api/user/chats/${currentUserId}`)
   }
 
+  getConversation(currentUserUid: string, otherUserUid: string): Observable<any>{
+    return this.http.get(`${this.endpoint}/api/messages/${currentUserUid}/${otherUserUid}`)
+  }
+
   sendMessage(message: any): void {
     this.socket.emit('sendMessage', message);
   }

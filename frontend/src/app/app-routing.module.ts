@@ -19,13 +19,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create/create.module').then( m => m.CreatePageModule)
   },
   {
-    path: 'messages',
+    path: 'messages/:id',
     loadChildren: () => import('./pages/messages/messages.module').then( m => m.MessagesPageModule)
   },
   {
     path: 'chat-overview',
     loadChildren: () => import('./pages/chat-overview/chat-overview.module').then( m => m.ChatOverviewPageModule)
-  }
+  },
 ];
 @NgModule({
   imports: [

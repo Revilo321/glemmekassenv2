@@ -22,19 +22,17 @@ export class SocketService {
     this.socket = io(this.url);
 
     this.socket.on('connect', () => {
-      console.log('Connected to server');
       this.registerUser(this.firebaseUid);
       this.onConnect.emit();
     });
   }
 
-  sendMessage(message: string, senderId: string, receiverId: string): void {
-    console.log(message, senderId, receiverId);
-    this.socket.emit('new-message', { message, senderId, receiverId });
+  sendMessage(newMessage: any): void {
+    const message = newMessage
+    this.socket.emit('new-message', { message });
   }
 
   onNewMessage(handler: (message: any) => void) {
-    console.log('am i run in the socket service?');
     this.socket.on('new-message', handler);
   }
 

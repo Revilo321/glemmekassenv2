@@ -4,7 +4,6 @@ const Message = db.message;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  console.log(req.body)
   const { uid, email, name, phone, age, zipcode, city } = req.body
 
   User.create({ uid, email, name, phone, age, zipcode, city })
@@ -55,11 +54,18 @@ exports.findChats = (req, res) => {
   })
   .then(users => {
     const filteredUsers = users.filter(user => user.ReceivedMessages.length > 0 || user.SentMessages.length > 0);
-    
-    console.log(filteredUsers);
     res.send(filteredUsers);
   })
   .catch(error => {
     console.error('Error fetching chat overview:', error);
   });
+}
+
+exports.getUserName = async(req, res) => {
+  try {
+    const user = await User.findByPk(req.params.uid, {attributes: ['name']});
+    res.json(user.name);
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
 }

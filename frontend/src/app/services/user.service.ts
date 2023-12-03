@@ -1,6 +1,7 @@
 import { HttpClient  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class UserService {
 
   constructor(private http: HttpClient, private afAuth: AngularFireAuth) { }
+
+  endpoint: string = 'http://localhost:8080/api/user';
 
   async registerUserInBackend(userData: any) {
     const user = await this.afAuth.currentUser;
@@ -32,4 +35,9 @@ export class UserService {
       }
     });
   }
+
+  getUserName(uid: string): Observable<any> {
+    return this.http.get(`${this.endpoint}/name/${uid}`);
+  }
+
 }
