@@ -37,6 +37,21 @@ io.on('connection', (socket) => {
   socket.on('register', (userFirebaseUID) => {
     users[userFirebaseUID] = socket.id
   })
+
+  socket.on('startTyping', (data) => {
+    const receiverSocketId = users[data.receiverId];
+    if(receiverSocketId){
+      io.to(receiverSocketId).emit('userTyping', {senderId: data.senderId});
+    }
+  });
+
+  socket.on('stopTyping', (data) => {
+    const receiverSocketId = users[data.receiverId];
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit('userStoppedTyping', { senderId: data.senderId });
+    }
+  });
+
   socket.on('new-message', async (data) => {
     try {
       const { message } = data

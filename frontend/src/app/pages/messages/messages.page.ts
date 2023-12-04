@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MessagesPage implements OnInit {
   @ViewChild(IonContent) content!: IonContent;
+  isUserTyping: boolean = false;
   isLoading: boolean = true;
   messages: any[] = [];
   senderName: string = '';
@@ -23,7 +24,7 @@ export class MessagesPage implements OnInit {
   showOrHideTabs(style: string) {
     const tabBar = document.getElementById('app-tab-bar');
     const fabButton = document.getElementById('chat-fab');
-    if(tabBar !== null && fabButton !== null){
+    if (tabBar !== null && fabButton !== null) {
       tabBar.style.display = style;
       fabButton.style.display = style;
     }
@@ -42,7 +43,7 @@ export class MessagesPage implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private chatService: ChatService,
-    private userService: UserService,
+    private userService: UserService
   ) {}
   ngOnInit() {
     this.isLoading = true;
@@ -67,6 +68,17 @@ export class MessagesPage implements OnInit {
           this.messages.push(message);
         }
         this.scrollToBottom(100);
+      });
+      this.socketService.onUserTyping((data) => {
+        if (data.senderId === this.otherUserFirebaseUid) {
+          this.isUserTyping = true;
+        }
+      });
+
+      this.socketService.onUserStoppedTyping((data) => {
+        if (data.senderId === this.otherUserFirebaseUid) {
+          this.isUserTyping = false;
+        }
       });
     });
     this.scrollToBottom(2000);
@@ -117,5 +129,21 @@ export class MessagesPage implements OnInit {
     setTimeout(() => {
       this.content.scrollToBottom(300);
     }, ms);
+  }
+
+  startTyping() {
+    this.socketService.emitTypingEvent(
+      this.currentUserFirebaseUid,
+      this.otherUserFirebaseUid,
+      true
+    );
+  }
+
+  stopTyping() {
+    this.socketService.emitTypingEvent(
+      this.currentUserFirebaseUid,
+      this.otherUserFirebaseUid,
+      false
+    );
   }
 }

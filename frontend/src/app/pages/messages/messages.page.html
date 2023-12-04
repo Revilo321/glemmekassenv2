@@ -1,60 +1,71 @@
-
-  <ion-header translucent="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button text defaultHref="/tabs/chat-overview"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text defaultHref="/tabs/chat-overview"></ion-back-button>
+    </ion-buttons>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ senderName }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-    <ion-item lines="none" class="ion-no-padding">
-        <ion-avatar slot="start">
-          <img src="https://ionicframework.com/docs/img/demos/avatar.svg">
-        </ion-avatar>
-        <ion-label>
-          <h2>{{ senderName }}</h2>
-        </ion-label>
-      </ion-item>
-          <div *ngIf="isLoading; else chatMessages" class="skeleton-container">
-        <div *ngFor="let i of [0,1,2,3,4]; let isOdd = odd" class="skeleton-message" [ngClass]="{'left': !isOdd, 'right': isOdd}">
-          <ion-skeleton-text animated style="width: 100%;"></ion-skeleton-text>
-          <ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text>
+  <div *ngIf="isLoading; else chatMessages" class="skeleton-container">
+    <div
+      *ngFor="let i of [0,1,2,3,4]; let isOdd = odd"
+      class="skeleton-message"
+      [ngClass]="{'left': !isOdd, 'right': isOdd}"
+    >
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+    </div>
+  </div>
+  <ng-template #chatMessages>
+    <div class="chat-container">
+      <div *ngFor="let message of messages">
+        <div *ngIf="!isMyMessage(message)" class="sender-name">
+          {{ message.senderName }}
         </div>
-      </div>
-      <ng-template #chatMessages>
-      <div class="chat-container">
-        <div *ngFor="let message of messages">
-          <div *ngIf="!isMyMessage(message)" class="sender-name">
-            {{ message.senderName }}
-          </div>
-          <div
-            [ngClass]="{
+        <div
+          [ngClass]="{
               'message-bubble': true,
               mine: isMyMessage(message),
               theirs: !isMyMessage(message)
             }"
-          >
-            <div class="message">
-                <div class="message-time">{{ message.time | date:'HH:mm' }}</div>
-              <div class="message-text">{{ message.text }}</div>
-            </div>
+        >
+        <div class="message">
+            <div class="message-time">{{ message.time | date:'HH:mm' }}</div>
+            <div class="message-text">{{ message.text }}</div>
           </div>
+          
         </div>
       </div>
-      </ng-template>
-    </ion-content>
-    <ion-footer>
-      <ion-item lines="none">
-        <ion-input
-          type="text"
-          placeholder="Skriv en besked..."
-          [(ngModel)]="messageContent"
-        ></ion-input>
-        <ion-buttons slot="end">
-          <ion-button (click)="sendMessage()">
-            <ion-icon color="secondary" slot="icon-only" name="send"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </ion-item>
-    </ion-footer>
+      <div *ngIf="isUserTyping" class="typing-indicator">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </ng-template>
+</ion-content>
+<ion-footer>
+  <ion-item lines="none">
+    <ion-input
+      (ionFocus)="startTyping()"
+      (ionBlur)="stopTyping()"
+      type="text"
+      placeholder="Skriv en besked..."
+      [(ngModel)]="messageContent"
+    ></ion-input>
+    <ion-buttons slot="end">
+      <ion-button (click)="sendMessage()">
+        <ion-icon color="secondary" slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-footer>

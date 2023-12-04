@@ -36,7 +36,20 @@ export class SocketService {
     this.socket.on('new-message', handler);
   }
 
+  onUserTyping(handler: (data: any) => void) {
+    this.socket.on('userTyping', handler);
+  }
+
+  onUserStoppedTyping(handler: (data: any) => void) {
+    this.socket.on('userStoppedTyping', handler);
+  }
+
   registerUser(userFirebaseUID: string): void {
     this.socket.emit('register', userFirebaseUID);
+  }
+
+  emitTypingEvent(senderId: string, receiverId: string, isTyping: boolean): void {
+    const event = isTyping ? 'startTyping' : 'stopTyping';
+    this.socket.emit(event, { senderId, receiverId });
   }
 }
