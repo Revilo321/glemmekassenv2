@@ -52,20 +52,18 @@
       </div>
     </div>
   </ng-template>
-</ion-content>
-<ion-footer>
-  <ion-item lines="none">
-    <ion-input
-      (ionFocus)="startTyping()"
-      (ionBlur)="stopTyping()"
+  <div class="message-input" lines="none">
+    <input
+      (focus)="startTyping()"
+      (blur)="stopTyping()"
       type="text"
       placeholder="Skriv en besked..."
       [(ngModel)]="messageContent"
-    ></ion-input>
+    />
     <ion-buttons slot="end">
       <ion-button (click)="sendMessage()">
         <ion-icon color="secondary" slot="icon-only" name="send"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-item>
-</ion-footer>
+  </div>
+</ion-content>
