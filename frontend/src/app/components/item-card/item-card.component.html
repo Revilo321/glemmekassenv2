@@ -5,6 +5,10 @@
         <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" />
       </ion-col>
       <ion-col>
+        <div class="checkout">
+          <ion-label [class.checked-label]="isCheckedOut">{{isCheckedOut ? 'Afsluttet' : 'Aktiv'}}</ion-label>
+          <ion-checkbox (ngModel)="isCheckedOut" (ionChange)="toggleCheckout($event)"></ion-checkbox>
+        </div>
         <ion-card-content class="ion-no-padding">
           <ion-card-title> Nøgler </ion-card-title>
           <p><strong>{{foundOrLost ? 'Fundet af' : 'Mistet af'}}</strong> Jens Jensen</p>
@@ -17,9 +21,12 @@
           <ion-button *ngIf="!isCreator" color="secondary" size="small"
             ><p>Kontakt</p>
           </ion-button>
-          <ion-button *ngIf="isCreator" color="secondary" size="small" (click)="editCard()"
-            ><p>Rediger</p>
-          </ion-button>
+          <div class="auth-options" *ngIf="isCreator">
+            <ion-icon color="primary" name="trash"></ion-icon>
+            <ion-button color="secondary" size="small" (click)="editCard()"
+              ><p>Rediger</p>
+            </ion-button>
+          </div>
       </div>
       </ion-col>
     </ion-row>
