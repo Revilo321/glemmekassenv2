@@ -1,6 +1,9 @@
 ion-header{
   --background-color: transparent;
 }
+ion-content{
+  height: fit-content;
+}
 ion-toolbar {
   --background-color: transparent;
   --ion-color-base: transparent !important;
