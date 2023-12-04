@@ -1,12 +1,4 @@
 <ion-content [fullscreen]="true">
   <ion-text *ngIf="currentUser">currentuser email: {{currentUser.email}}</ion-text>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <app-item-card [foundOrLost]="false" [isCreator]="false" ></app-item-card>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>
