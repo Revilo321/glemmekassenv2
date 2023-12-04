@@ -53,10 +53,10 @@
     </div>
   </ng-template>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
+<ion-footer [translucent]="true" class="ion-no-border">
     <ion-item lines="none">
       <ion-input
+      class="custom"
         (ionFocus)="startTyping()"
         (ionBlur)="stopTyping()"
         type="text"
@@ -69,5 +69,4 @@
         </ion-button>
       </ion-buttons>
     </ion-item>
-  </ion-toolbar>
 </ion-footer>
