@@ -1,14 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Item } from 'src/app/types/ItemType';
 
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss'],
 })
-export class ItemCardComponent  implements OnInit {
+export class ItemCardComponent{
   isCheckedOut: boolean = false;
   @Input() foundOrLost: boolean = false;
   @Input() isCreator: boolean = false;
+  @Input() item: Item = {
+    name: 'Jens Jensen',
+    location: 'Slagelse',
+    dateTime: '01/12-23 kl 12:00',
+    description: 'Min hund er løbet væk'
+  };
+
+
 
   editCard() {
     console.log("edit card")
@@ -17,12 +26,9 @@ export class ItemCardComponent  implements OnInit {
   toggleCheckout(event: any) {
     if(event){
       this.isCheckedOut = !this.isCheckedOut;
-      console.log(this.isCheckedOut)
     }
   }
 
   constructor() { }
-
-  ngOnInit() {}
 
 }

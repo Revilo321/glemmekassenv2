@@ -5,17 +5,19 @@
         <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" />
       </ion-col>
       <ion-col>
-        <div class="checkout">
+        <div *ngIf="isCreator" class="checkout">
           <ion-label [class.checked-label]="isCheckedOut">{{isCheckedOut ? 'Afsluttet' : 'Aktiv'}}</ion-label>
           <ion-checkbox (ngModel)="isCheckedOut" (ionChange)="toggleCheckout($event)"></ion-checkbox>
         </div>
-        <ion-card-content class="ion-no-padding">
+        <ion-card-content [ngStyle]="{ 'padding-top': !isCreator ? '20px' : '0px' }" class="ion-no-padding">
           <ion-card-title> Nøgler </ion-card-title>
-          <p><strong>{{foundOrLost ? 'Fundet af' : 'Mistet af'}}</strong> Jens Jensen</p>
-          <p><strong>Lokation:</strong> Slagelse</p>
-          <p><strong>Dato og tid:</strong> 01/12-23 kl 12:00</p>
+          <p><strong>{{foundOrLost ? 'Fundet af' : 'Mistet af'}}</strong> {{item.name}}</p>
+          <p><strong>Lokation:</strong> {{item.location}} </p>
+          <p><strong>Dato og tid:</strong> {{item.dateTime}} </p>
           <p><strong>Beskrivelse:</strong></p>
-          <p>3 nøgler med kvast nøglering</p>
+          <p>
+            {{item.description}}
+          </p>
         </ion-card-content>
         <div class="button-container">
           <ion-button *ngIf="!isCreator" color="secondary" size="small"
