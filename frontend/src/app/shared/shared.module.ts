@@ -19,7 +19,7 @@ import { RegisterComponent } from '../components/register/register.component';
   exports: [
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ]
 })
 export class SharedModule { }

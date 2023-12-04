@@ -1,5 +1,5 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom" color="primary">
+  <ion-tab-bar slot="bottom" color="primary" id="app-tab-bar">
     <ion-tab-button tab="tab1" href="/tabs/tab1">
       <button>
         <ion-icon color="primary" name="home"></ion-icon>
@@ -14,7 +14,7 @@
       <ion-label>Om</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="messages" href="/tabs/messages">
+    <ion-tab-button tab="messages">
     </ion-tab-button>
 
     <ion-tab-button tab="create" href="/tabs/create">
@@ -33,7 +33,7 @@
   </ion-tab-bar>
 
 </ion-tabs>
-<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="test" (click)="navigateToMessages()">
+<ion-fab id="chat-fab" vertical="bottom" horizontal="center" slot="fixed" class="test" (click)="navigateToMessages()">
   <ion-fab-button class="fab-button" color="tertiary">
     <ion-icon class="fab" name="chatbubbles"></ion-icon>
   </ion-fab-button>

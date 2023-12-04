@@ -34,7 +34,7 @@ export class AuthService {
   getCurrentUser(): Observable<firebase.User | null> {
     return this.afAuth.authState;
   }
-
+  
   isLoggedIn(): Observable<boolean> {
     return this.afAuth.authState.pipe(map(user => !!user));
   }
