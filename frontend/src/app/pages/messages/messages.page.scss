@@ -1,12 +1,22 @@
 ion-header{
   --background-color: transparent;
 }
-ion-content{
-  height: fit-content;
-}
+
 ion-toolbar {
   --background-color: transparent;
   --ion-color-base: transparent !important;
+}
+
+ion-input.custom{
+  --border-radius: 15px;
+  --highlight-color-focused: none;
+  --background: #EFEFEF;
+  --highlight-color-focused: none;
+  --highlight-color-valid: black;
+  --highlight-color-invalid: black;
+  --padding-start: 20px !important;
+  font-size: small;
+  
 }
 
 .chat-container {
@@ -67,6 +77,10 @@ ion-toolbar {
   ion-footer{
     margin: 10px 0px 10px 0px;
   }
+
+  .scroll-content {
+    margin-bottom: 0!important;
+  }
   
   
   .skeleton-message {
@@ -104,26 +118,6 @@ ion-toolbar {
     margin-bottom: 10px;
   }
 
-  input{
-    width: 100%;
-    border-radius: 30px;
-    border: none;
-    padding: 10px 20px;
-    background-color: #F7F7f7;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.36) inset;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.36) inset;
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.36) inset;
-  }
-  input::placeholder{
-      font-size: 14px;
-  }
-  input:focus{
-    outline: none;
-  }
-  input[type="text"]
-{
-    font-size:14px;
-}
 
 
 //Other user typing indicator

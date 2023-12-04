@@ -53,12 +53,12 @@
     </div>
   </ng-template>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
+<ion-footer [translucent]="true" class="ion-no-border">
     <ion-item lines="none">
       <ion-input
-        (focus)="startTyping()"
-        (blur)="stopTyping()"
+      class="custom"
+        (ionFocus)="startTyping()"
+        (ionBlur)="stopTyping()"
         type="text"
         placeholder="Skriv en besked..."
         [(ngModel)]="messageContent"
@@ -69,5 +69,4 @@
         </ion-button>
       </ion-buttons>
     </ion-item>
-  </ion-toolbar>
 </ion-footer>
