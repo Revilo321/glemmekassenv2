@@ -11,6 +11,7 @@ export class ItemCardComponent{
   @Input() foundOrLost: boolean = false;
   @Input() isCreator: boolean = false;
   @Input() item: Item = {
+    title: 'Hund',
     name: 'Jens Jensen',
     location: 'Slagelse',
     dateTime: '01/12-23 kl 12:00',
