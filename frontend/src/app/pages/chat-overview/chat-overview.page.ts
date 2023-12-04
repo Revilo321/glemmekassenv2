@@ -10,6 +10,7 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatOverviewPage {
   isLoading: boolean = true;
+  currentUserId: string = '';
   chats: any[] = [];
 
   constructor(private chatService: ChatService, private authService: AuthService, private router: Router) { }
@@ -26,35 +27,28 @@ export class ChatOverviewPage {
         this.chats = data.map(user => {
           let lastMessageText = 'No messages yet';
           let lastMessageCreatedAt = '';
+          let isLastMessageSentByCurrentUser = false;
   
-          if (user.SentMessages.length > 0 && user.ReceivedMessages.length > 0) {
-            const lastSentMessage = user.SentMessages[0];
-            const lastReceivedMessage = user.ReceivedMessages[0];
-            const lastSentDate = new Date(lastSentMessage.latestMessageCreatedAt);
-            const lastReceivedDate = new Date(lastReceivedMessage.latestMessageCreatedAt);
-            if (lastSentDate > lastReceivedDate) {
-              lastMessageText = lastSentMessage.latestMessageText;
-              lastMessageCreatedAt = lastSentMessage.latestMessageCreatedAt;
-            } else {
-              lastMessageText = lastReceivedMessage.latestMessageText;
-              lastMessageCreatedAt = lastReceivedMessage.latestMessageCreatedAt;
-            }
-          } else if (user.SentMessages.length > 0) {
-            
-            lastMessageText = user.SentMessages[0].latestMessageText;
-            lastMessageCreatedAt = user.SentMessages[0].latestMessageCreatedAt;
-          } else if (user.ReceivedMessages.length > 0) {
-            
-            lastMessageText = user.ReceivedMessages[0].latestMessageText;
-            lastMessageCreatedAt = user.ReceivedMessages[0].latestMessageCreatedAt;
+          const lastSentMessage = user.SentMessages[0];
+          const lastReceivedMessage = user.ReceivedMessages[0];
+          if (lastSentMessage && (!lastReceivedMessage || new Date(lastSentMessage.latestMessageCreatedAt) > new Date(lastReceivedMessage.latestMessageCreatedAt))) {
+            lastMessageText = lastSentMessage.latestMessageText;
+            lastMessageCreatedAt = lastSentMessage.latestMessageCreatedAt;
+            isLastMessageSentByCurrentUser = true;
+          } else if (lastReceivedMessage) {
+            lastMessageText = lastReceivedMessage.latestMessageText;
+            lastMessageCreatedAt = lastReceivedMessage.latestMessageCreatedAt;
+            isLastMessageSentByCurrentUser = false;
           }
           this.isLoading = false;
-          return {
+          const newChatObject = {
             name: user.name,
             uid: user.uid,
             latestMessageText: lastMessageText,
-            latestMessageCreatedAt: lastMessageCreatedAt
-          };
+            latestMessageCreatedAt: lastMessageCreatedAt,
+            isLastMessageSentByCurrentUser
+          }
+          return newChatObject;
         });
       },
       error: (error) => {
@@ -67,7 +61,7 @@ export class ChatOverviewPage {
   }
 
   openChat(otherUserUid: string) {
-    this.router.navigate(['/tabs/messages', otherUserUid]); // Replace with your actual route
+    this.router.navigate(['/tabs/messages', otherUserUid]);
   }
 
 }

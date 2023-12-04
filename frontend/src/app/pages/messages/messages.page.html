@@ -57,8 +57,8 @@
   <ion-toolbar>
     <ion-item lines="none">
       <ion-input
-        (focus)="startTyping()"
-        (blur)="stopTyping()"
+        (ionFocus)="startTyping()"
+        (ionBlur)="stopTyping()"
         type="text"
         placeholder="Skriv en besked..."
         [(ngModel)]="messageContent"

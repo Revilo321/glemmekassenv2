@@ -23,24 +23,19 @@ exports.findChats = (req, res) => {
     attributes: ['uid', 'name'],
     include: [{
       model: Message,
-      as: 'SentMessages',
+      as: 'SentMessages', // Messages sent by the user
       attributes: [['text', 'latestMessageText'], ['createdAt', 'latestMessageCreatedAt']],
       where: {
-        [Op.or]: [
-          { receiverId: currentUserId }
-        ]
+        senderId: currentUserId, // Fetches messages where the user is the sender
       },
       limit: 1,
       order: [['createdAt', 'DESC']]
-    },
-    {
+    }, {
       model: Message,
-      as: 'ReceivedMessages',
+      as: 'ReceivedMessages', // Messages received by the user
       attributes: [['text', 'latestMessageText'], ['createdAt', 'latestMessageCreatedAt']],
       where: {
-        [Op.or]: [
-          { senderId: currentUserId },
-        ]
+        receiverId: currentUserId, // Fetches messages where the user is the receiver
       },
       limit: 1,
       order: [['createdAt', 'DESC']]

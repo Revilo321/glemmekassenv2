@@ -24,7 +24,7 @@
         </ion-avatar>
         <ion-label>
           <h2>{{ chat.name }}</h2>
-          <p>{{ chat.latestMessageText }}</p>
+          <p>{{ chat.isLastMessageSentByCurrentUser ? 'Dig: ' + chat.latestMessageText : chat.latestMessageText }}</p>
         </ion-label>
         <ion-note slot="end">{{ chat.latestMessageCreatedAt | date: 'HH:mm' }}</ion-note>
       </ion-item>
