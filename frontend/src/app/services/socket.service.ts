@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { AuthService } from './auth.service';
+import { apiUrl } from '../constants/apiUrl';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { AuthService } from './auth.service';
 export class SocketService {
   public onConnect: EventEmitter<void> = new EventEmitter();
   firebaseUid = '';
-  private url = 'http://localhost:8080/';
+  private url = apiUrl;
   private socket!: Socket;
 
   constructor(private authService: AuthService) {

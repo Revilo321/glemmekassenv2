@@ -2,6 +2,7 @@ import { HttpClient  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
+import { apiUrl } from '../constants/apiUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
 
   constructor(private http: HttpClient, private afAuth: AngularFireAuth) { }
 
-  endpoint: string = 'http://localhost:8080/api/user';
+  endpoint: string = `${apiUrl}/api/user`;
 
   async registerUserInBackend(userData: any) {
     const user = await this.afAuth.currentUser;
@@ -28,7 +29,7 @@ export class UserService {
       city: userData.city
     };
 
-    return this.http.post('http://localhost:8080/api/user', body).subscribe({
+    return this.http.post(this.endpoint, body).subscribe({
       next: res => {
       },
       error: err => {
