@@ -14,7 +14,11 @@ export class AuthService {
 
   async signUp(formValues: any){
     try {
-      await this.afAuth.createUserWithEmailAndPassword(formValues.email, formValues.password);
+      await this.afAuth.createUserWithEmailAndPassword(formValues.email, formValues.password).then(res => {
+        return res.user?.updateProfile({
+          displayName: formValues.name
+        })
+      });
       const userData = {...formValues}
       delete userData.password;
       await this.userService.registerUserInBackend(userData);

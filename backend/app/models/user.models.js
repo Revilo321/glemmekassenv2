@@ -1,7 +1,3 @@
-const db = require('../models')
-const message = db.message;
-
-
 module.exports = (sequelize, Sequelize) => {
   const user = sequelize.define('user', {
     uid: {

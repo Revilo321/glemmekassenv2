@@ -3,7 +3,6 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 async function authMiddleware(req, res, next) {
-    console.log(req)
   const token = req.headers.authorization?.split('Bearer ')[1];
 
   if (!token) {

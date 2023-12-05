@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 require('./app/routes/user.routes')(app)
 require('./app/routes/messages.routes')(app)
-
+require('./app/routes/items.routes')(app)
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to code squad' })
 })

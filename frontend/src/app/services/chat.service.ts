@@ -12,7 +12,6 @@ export class ChatService {
   private readonly endpoint: string = apiUrl;
 
   constructor(private http: HttpClient) { 
-    console.log(apiUrl)
     this.socket = io(this.endpoint);
   }
 
