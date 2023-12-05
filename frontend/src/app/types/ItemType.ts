@@ -5,4 +5,5 @@ export type Item = {
     location: string;
     dateTime: string;
     description: string;
+    userUid?: string;
 }

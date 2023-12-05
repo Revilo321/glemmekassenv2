@@ -19,7 +19,6 @@ export class LoginComponent {
     try {
       await this.authService.signIn(this.email, this.password);
       this.authService.getCurrentUser().subscribe((user) => {
-        console.log("run?")
       })
       this.router.navigate(['tabs/tab1'])
     } catch (error) {

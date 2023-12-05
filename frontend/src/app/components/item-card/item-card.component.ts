@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/types/ItemType';
 
 @Component({
@@ -6,10 +7,11 @@ import { Item } from 'src/app/types/ItemType';
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss'],
 })
-export class ItemCardComponent{
+export class ItemCardComponent implements OnInit {
   isCheckedOut: boolean = false;
+  isCreator: boolean = false;
+  @Input() currentUserUid: string = '';
   @Input() foundOrLost: boolean = false;
-  @Input() isCreator: boolean = false;
   @Input() item: Item = {
     title: 'Hund',
     name: 'Jens Jensen',
@@ -19,7 +21,9 @@ export class ItemCardComponent{
   };
 
 
-
+  ngOnInit() {
+    this.currentUserUid === this.item.userUid ? this.isCreator = true : this.isCreator = false;
+  }
   editCard() {
     console.log("edit card")
   }
@@ -30,6 +34,10 @@ export class ItemCardComponent{
     }
   }
 
-  constructor() { }
+  gotoChat(uid: string){
+    this.router.navigate(['/tabs/messages',uid])
+  }
+
+  constructor(private router: Router) { }
 
 }

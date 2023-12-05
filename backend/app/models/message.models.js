@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
             refereces: {
-                model: 'Users',
+                model: 'users',
                 key: 'uid'
             }
         },
@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
             refereces: {
-                model: 'Users',
+                model: 'users',
                 key: 'uid'
             }
         },

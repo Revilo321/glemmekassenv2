@@ -1,4 +1,6 @@
 <ion-content [fullscreen]="true">
-  <ion-text *ngIf="currentUser">currentuser email: {{currentUser.email}}</ion-text>
-  <app-item-card [foundOrLost]="false" [isCreator]="false" ></app-item-card>
+  <ion-text *ngIf="currentUser">Velkommen {{currentUser.displayName}}</ion-text>
+  <div *ngFor="let item of items">
+    <app-item-card [item]="item" [foundOrLost]="isLostItems" [currentUserUid]="currentUser?.uid!" ></app-item-card>
+  </div>
 </ion-content>

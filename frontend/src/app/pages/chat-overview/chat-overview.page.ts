@@ -55,7 +55,7 @@ export class ChatOverviewPage {
         console.error('Error fetching chats:', error);
       },
       complete: () => {
-        console.log('Chat fetch complete');
+        
       }
     });
   }
