@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'chat-overview',
     loadChildren: () => import('./pages/chat-overview/chat-overview.module').then( m => m.ChatOverviewPageModule)
+  },  {
+    path: 'terms-and-conditions',
+    loadChildren: () => import('./pages/terms-and-conditions/terms-and-conditions.module').then( m => m.TermsAndConditionsPageModule)
   },
+
 ];
 @NgModule({
   imports: [
