@@ -9,7 +9,7 @@
           <ion-label [class.checked-label]="isCheckedOut">{{isCheckedOut ? 'Afsluttet' : 'Aktiv'}}</ion-label>
           <ion-checkbox (ngModel)="isCheckedOut" (ionChange)="toggleCheckout($event)"></ion-checkbox>
         </div>
-        <ion-card-content [ngStyle]="{ 'padding-top': !isCreator ? '20px' : '0px' }" class="ion-no-padding">
+        <ion-card-content class="ion-no-padding">
           <ion-card-title> {{item.title}} </ion-card-title>
           <p><strong>{{foundOrLost ? 'Fundet af' : 'Mistet af'}}</strong> {{item.name}}</p>
           <p><strong>Lokation:</strong> {{item.location}} </p>
