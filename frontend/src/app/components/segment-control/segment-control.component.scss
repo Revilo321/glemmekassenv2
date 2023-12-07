@@ -1,0 +1,23 @@
+ion-segment{
+    --background: var(--ion-color-tertiary);
+    border-radius: 0px;
+    margin: 0;
+    height: 40px;
+}
+
+ion-segment-button{
+    --indicator-color: var(--ion-color-primary);
+    --color: #B0C2D9;
+    --border-radius: 0px;
+    --color-checked: white;
+    margin: 0;
+    margin-left: -2px;
+    margin-right: -2px;
+}
+
+
+ion-segment-button.ios::part(native) {
+    font-size: 14px;
+}
+
+  
