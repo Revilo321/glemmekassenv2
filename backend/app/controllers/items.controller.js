@@ -12,7 +12,23 @@ exports.findItems = async (req, res) => {
   }
 }
 
-exports.createLostItem= async(req, res) => {
-    const lostItem = await Item.create(req.body);
-    res.status(201).json(lostItem);
-}
+exports.createItem = async (req, res) => {
+  try {
+    const { title, location, dateTime, description, itemType, name, uid, imageUrl } = req.body;
+    
+    const newItem = await Item.create({
+      title,
+      location,
+      dateTime,
+      description,
+      itemType, 
+      name,
+      userUid: uid,
+      imageUrl
+    });
+    res.status(201).json(newItem);
+  } catch (error) {
+    console.error('Error creating item:', error);
+    res.status(500).json({ error: error.message || 'An error occurred while creating the item.' });
+  }
+};

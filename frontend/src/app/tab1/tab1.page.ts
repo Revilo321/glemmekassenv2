@@ -9,7 +9,7 @@ import { SegmentValue } from '@ionic/angular';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page {
   isLostItems: boolean = false;
   isLoggedIn: boolean = false;
   currentUser: firebase.User | null = null;
@@ -22,18 +22,17 @@ export class Tab1Page implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-      this.authService.getCurrentUser().subscribe((user) => {
-        this.currentUser = user;
-        this.loadItems();
-      });
-    
+  ionViewWillEnter(){
+    this.authService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+      this.loadItems();
+    });
   }
 
   loadItems() {
     this.itemService.getItems().subscribe(data => {
       this.items = data;
-      this.filterItems('lost');
+      this.filterItems('found');
     });
   }
 

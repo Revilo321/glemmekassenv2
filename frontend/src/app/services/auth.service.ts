@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { UserService } from './user.service';
-import { Observable, map } from 'rxjs';
+import { Observable, last, map, switchMap } from 'rxjs';
 import firebase from 'firebase/compat';
-import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService) {}
+  constructor(private afAuth: AngularFireAuth, private userService: UserService, private storage: AngularFireStorage) {}
 
   async signUp(formValues: any){
     try {
@@ -41,6 +41,17 @@ export class AuthService {
   
   isLoggedIn(): Observable<boolean> {
     return this.afAuth.authState.pipe(map(user => !!user));
+  }
+
+  uploadFile(file: File): Observable<string> {
+    const filePath = `images/${Date.now()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+  
+    return task.snapshotChanges().pipe(
+      last(),
+      switchMap(() => fileRef.getDownloadURL())
+    );
   }
 
 }

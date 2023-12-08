@@ -2,6 +2,6 @@
   <app-header-page-section title="Glemmekassen" subTitle="Har du mistet noget eller måske fundet noget? Så er du kommet til det rette sted!" text="Glemmekassen er en platform hvor du har mulighed for at lede efter mistede genstande, eller finde ejermanden til fundne genstande." ></app-header-page-section>
 <app-segment-control (segmentChange)="handleSegmentChange($event)"></app-segment-control>
   <div class="card-container" *ngFor="let item of filteredItems">
-    <app-item-card [item]="item" [foundOrLost]="isLostItems" [currentUserUid]="currentUser?.uid!" ></app-item-card>
+    <app-item-card [item]="item" [currentUserUid]="currentUser?.uid!" ></app-item-card>
   </div>
 </ion-content>

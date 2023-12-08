@@ -2,7 +2,7 @@
   <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col size="4">
-        <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" />
+        <img [src]="item.imageUrl ? item.imageUrl : 'https://i0.wp.com/godstedlund.dk/wp-content/uploads/2023/04/placeholder-4.png?w=1200&ssl=1'" />
       </ion-col>
       <ion-col>
         <div *ngIf="isCreator" class="checkout">
@@ -11,7 +11,7 @@
         </div>
         <ion-card-content class="ion-no-padding">
           <ion-card-title> {{item.title}} </ion-card-title>
-          <p><strong>{{foundOrLost ? 'Fundet af' : 'Mistet af'}}</strong> {{item.name}}</p>
+          <p><strong>{{item.itemType === 'found' ? 'Fundet af' : 'Mistet af'}}</strong> {{item.name}}</p>
           <p><strong>Lokation:</strong> {{item.location}} </p>
           <p><strong>Dato og tid:</strong> {{item.dateTime | date:'dd-MM-yy - HH:mm'}} </p>
           <p><strong>Beskrivelse:</strong></p>
