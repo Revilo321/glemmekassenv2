@@ -1,0 +1,27 @@
+<ion-text>
+  <h1>Anmeld svindel</h1>
+  <h2>Har du oplevet at blive svindlet på Glemmekassen?</h2>
+  <p>Hos Glemmekassen accepterer vi ikke svindel og uærlig adfærd, og dette bliver taget meget seriøst. Så send os endelig en anmeldning, hvis du er blevet svindlet og vi vil tage hånd om dagen.</p>
+</ion-text>
+<form [formGroup]="reportForm">
+  <ion-item class="ion-no-padding">
+    <ion-label position="floating">Hvilken form for svindel?</ion-label>
+    <ion-input formControlName="type" required></ion-input>
+  </ion-item>
+  <ion-item class="ion-no-padding">
+    <ion-label position="floating">Med hvilken bruger?</ion-label>
+    <ion-input formControlName="user" required></ion-input>
+  </ion-item>
+  <ion-item class="ion-no-padding">
+    <ion-label position="floating">Dato og tid</ion-label>
+    <ion-input formControlName="datetime" required></ion-input>
+  </ion-item>
+  <ion-item class="ion-no-padding">
+    <ion-label position="floating">Beskrivelse</ion-label>
+    <ion-input formControlName="description" required></ion-input>
+  </ion-item>
+
+  <ion-button class="ion-no-margin" color="secondary" size="small" expand="block" type="submit">
+    Send
+  </ion-button>
+</form>
