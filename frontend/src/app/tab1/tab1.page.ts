@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import firebase from 'firebase/compat';
 import { ItemService } from '../services/item.service';
+import { SegmentValue } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page {
   isLostItems: boolean = false;
   isLoggedIn: boolean = false;
   currentUser: firebase.User | null = null;
   items: any[] = [];
+  filteredItems: any[] = [];
 
   constructor(private authService: AuthService, private itemService: ItemService) {
     this.authService.isLoggedIn().subscribe((loggedIn) => {
@@ -20,19 +22,31 @@ export class Tab1Page implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-      this.authService.getCurrentUser().subscribe((user) => {
-        this.currentUser = user;
-        this.loadItems();
-      });
-    
+  ionViewWillEnter(){
+    this.authService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+      this.loadItems();
+    });
   }
 
   loadItems() {
-    const type = 'lost';
-    this.itemService.getItems(type).subscribe(data => {
+    this.itemService.getItems().subscribe(data => {
       this.items = data;
+      this.filterItems('found');
     });
+  }
+
+  filterItems(filter: SegmentValue | undefined) {
+    const filterType = filter || 'lost';
+    if (filterType === 'lost' || filterType === 'found') {
+      this.filteredItems = this.items.filter(item => item.itemType === filter);
+    } else {
+      this.filteredItems = [...this.items];
+    }
+  }
+
+  handleSegmentChange(selectedSegment: string) {
+    this.filterItems(selectedSegment);
   }
 
   logOut(){

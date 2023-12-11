@@ -11,7 +11,6 @@ export class ItemCardComponent implements OnInit {
   isCheckedOut: boolean = false;
   isCreator: boolean = false;
   @Input() currentUserUid: string = '';
-  @Input() foundOrLost: boolean = false;
   @Input() item: Item = {
     title: 'Hund',
     name: 'Jens Jensen',

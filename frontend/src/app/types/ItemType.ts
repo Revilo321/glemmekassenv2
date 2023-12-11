@@ -6,4 +6,6 @@ export type Item = {
     dateTime: string;
     description: string;
     userUid?: string;
+    itemType?: string;
+    imageUrl?: string;
 }

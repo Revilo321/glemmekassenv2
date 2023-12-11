@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-login-component',
@@ -8,12 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  @Output() loggedIn = new EventEmitter<string>();
 
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastService: ToastService) { }
 
   async login() {
     try {
@@ -22,7 +22,7 @@ export class LoginComponent {
       })
       this.router.navigate(['tabs/tab1'])
     } catch (error) {
-      this.loggedIn.emit('Noget gik galt, prøv at logge ind igen!')
+      this.toastService.presentErrorToast('Der skete en fejl i login, tjek din adgangskode og email')
       console.error("Error during login", error);
     }
   }
