@@ -1,0 +1,32 @@
+.search-bar {
+    --background: #ffffff;
+    --box-shadow: 0px 0px 0px 1px;
+  }
+  
+  ion-searchbar {
+    --background: transparent;
+    --box-shadow: 0;
+    border-radius: 40px;
+    padding: 0;
+  }
+  
+  .search-icon {
+    margin-right: 5px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .search-div {
+    background-color: white;
+    height: 35px;
+    box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.7) inset;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+  }
+  
+  @media only screen and (min-width: 766px) {
+    .search-div {
+      margin: 0;
+    }
+  }

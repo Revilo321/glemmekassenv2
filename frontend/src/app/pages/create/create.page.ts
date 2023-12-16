@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { ToastController } from '@ionic/angular';
+import { errorMessages } from 'src/app/constants/errorMessages';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
 import { ItemService } from 'src/app/services/item.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { ErrorMessages } from 'src/app/types/errorMessageType';
 
 @Component({
   selector: 'app-create',
@@ -12,6 +15,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage {
+  formErrorMessages: ErrorMessages = errorMessages;
   imagePreview: string | ArrayBuffer | null = null;
   userObject: any = {};
   itemType: string = 'found';
@@ -58,7 +62,7 @@ export class CreatePage {
       },
       {
         label: 'By',
-        controlName: 'location',
+        controlName: 'city',
         type: 'text',
         placeholder: 'By',
         validators: [Validators.required],
@@ -92,6 +96,7 @@ export class CreatePage {
   }
 
   onSubmit() {
+    console.log(this.createForm)
     if (this.createForm.valid) {
       const formData = this.createForm.value;
       formData.uid = this.userObject.uid;
@@ -121,6 +126,8 @@ export class CreatePage {
       next: () => {
         this.toastService.presentSuccessToast('Dit opslag er blevet oprettet!');
         this.createForm.reset();
+        const currentDateAndTime = new Date();
+        this.createForm.get('dateTime')!.setValue(currentDateAndTime);
         this.imagePreview = null;
         this.selectedFile = null;
       },
@@ -130,6 +137,20 @@ export class CreatePage {
         );
       },
     });
+  }
+
+  getErrorMessage(controlName: string): string {
+    const controlErrors = this.createForm.get(controlName)?.errors;
+    if (controlErrors) {
+      const errorKey = Object.keys(controlErrors)[0];
+      const controlErrorMessages = this.formErrorMessages[controlName];
+
+      if (controlErrorMessages) {
+        const errorMessageObj = controlErrorMessages.find(msg => msg.type === errorKey);
+        return errorMessageObj ? errorMessageObj.message : '';
+      }
+    }
+    return '';
   }
 
   triggerFileInput() {
@@ -142,10 +163,43 @@ export class CreatePage {
     if (fileList && fileList.length > 0) {
       this.selectedFile = fileList[0];
 
-      // Read the file and generate a preview
       const reader = new FileReader();
       reader.onload = e => this.imagePreview = reader.result;
       reader.readAsDataURL(this.selectedFile);
     }
+  }
+
+  async takePicture() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera
+      });
+  
+      this.convertToBlob(image);
+    } catch (error) {
+      console.error('Error taking picture:', error);
+    }
+  }
+  
+  async convertToBlob(photo: Photo) {
+    if (!photo.webPath) {
+      this.imagePreview = null;
+      return;
+    }
+  
+    const response = await fetch(photo.webPath);
+    const blob = await response.blob();
+    const file = new File([blob], "image.jpeg", { type: "image/jpeg" });
+  
+    this.selectedFile = file;
+    this.imagePreview = photo.webPath;
+  }
+
+  deleteImage() {
+    this.imagePreview = null;
+    this.selectedFile = null;
   }
 }
