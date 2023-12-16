@@ -4,7 +4,6 @@ const Op = db.Sequelize.Op
 
 exports.findItems = async (req, res) => {
   try {
-    console.log(req.query)
     const { zipcode } = req.query;
     let whereCondition = {};
 
@@ -14,7 +13,8 @@ exports.findItems = async (req, res) => {
     }
 
     const items = await Item.findAll({
-      where: whereCondition
+      where: whereCondition,
+      order: [['createdAt', 'DESC']]
     });
 
     res.send(items);
@@ -26,11 +26,11 @@ exports.findItems = async (req, res) => {
 
 exports.createItem = async (req, res) => {
   try {
-    const { title, location, zipcode, dateTime, description, itemType, name, uid, imageUrl } = req.body;
+    const { title, city, zipcode, dateTime, description, itemType, name, uid, imageUrl } = req.body;
     
     const newItem = await Item.create({
       title,
-      location,
+      location: city,
       zipcode,
       dateTime,
       description,

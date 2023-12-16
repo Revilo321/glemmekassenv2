@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { ToastController } from '@ionic/angular';
+import { errorMessages } from 'src/app/constants/errorMessages';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
 import { ItemService } from 'src/app/services/item.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { ErrorMessages } from 'src/app/types/errorMessageType';
 
 @Component({
   selector: 'app-create',
@@ -13,6 +15,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage {
+  formErrorMessages: ErrorMessages = errorMessages;
   imagePreview: string | ArrayBuffer | null = null;
   userObject: any = {};
   itemType: string = 'found';
@@ -59,7 +62,7 @@ export class CreatePage {
       },
       {
         label: 'By',
-        controlName: 'location',
+        controlName: 'city',
         type: 'text',
         placeholder: 'By',
         validators: [Validators.required],
@@ -136,6 +139,20 @@ export class CreatePage {
     });
   }
 
+  getErrorMessage(controlName: string): string {
+    const controlErrors = this.createForm.get(controlName)?.errors;
+    if (controlErrors) {
+      const errorKey = Object.keys(controlErrors)[0];
+      const controlErrorMessages = this.formErrorMessages[controlName];
+
+      if (controlErrorMessages) {
+        const errorMessageObj = controlErrorMessages.find(msg => msg.type === errorKey);
+        return errorMessageObj ? errorMessageObj.message : '';
+      }
+    }
+    return '';
+  }
+
   triggerFileInput() {
     document.getElementById('myFileInput')!.click();
   }
@@ -146,7 +163,6 @@ export class CreatePage {
     if (fileList && fileList.length > 0) {
       this.selectedFile = fileList[0];
 
-      // Read the file and generate a preview
       const reader = new FileReader();
       reader.onload = e => this.imagePreview = reader.result;
       reader.readAsDataURL(this.selectedFile);
@@ -170,7 +186,6 @@ export class CreatePage {
   
   async convertToBlob(photo: Photo) {
     if (!photo.webPath) {
-      // Handle the case where webPath is undefined
       this.imagePreview = null;
       return;
     }

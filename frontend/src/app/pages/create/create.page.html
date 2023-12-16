@@ -31,6 +31,11 @@
           <ion-datetime-button datetime="datetime"></ion-datetime-button>
         </div>
       </ion-item>
+      <ion-text color="danger" *ngIf="createForm.get(field.controlName)!.invalid && (createForm.get(field.controlName)!.dirty || createForm.get(field.controlName)!.touched)">
+        <p class="error-message">
+          {{ getErrorMessage(field.controlName) }}
+        </p>
+      </ion-text>
     </div>
 
     <ion-modal [keepContentsMounted]="true">

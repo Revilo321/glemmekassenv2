@@ -19,9 +19,14 @@ export const errorMessages = {
         { type: 'required', message: 'Indtast en alder'}
       ],
       zipcode: [
-        { type: 'required', message: 'Indtast et postnummer'}
+        { type: 'required', message: 'Indtast et postnummer'},
+        { type: 'minlength', message: 'Postnummer skal være minimum 4 karakterer'},
+        { type: 'maxlength', message: 'Postnummer må maks være 4 karakterer'}
       ],
       city: [
         { type: 'required', message: 'Indtast en by'}
+      ],
+      title: [
+        { type: 'required', message: 'Indtast navn på genstand'}
       ]
 }
