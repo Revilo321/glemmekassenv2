@@ -44,7 +44,7 @@ export class Tab1Page {
     this.itemService.getItems().subscribe((data) => {
       this.items = data;
       this.filterItems('found');
-      this.isLoading = true;
+      this.isLoading = false;
     });
   }
 
