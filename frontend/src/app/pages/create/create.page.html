@@ -38,22 +38,27 @@
         <ion-datetime id="datetime" (ionChange)="dateChanged($event)"></ion-datetime>
       </ng-template>
     </ion-modal>
-      <div class="container" (click)="triggerFileInput()">
-        <input type="file" id="myFileInput" (change)="onFileSelected($event)" accept="image/*" hidden />
-        <div *ngIf="imagePreview" class="image-preview">
-          <img [src]="imagePreview" />
-        </div>
-        <div *ngIf="!imagePreview">
-          <div class="image-container">
+    <div class="container">
+      <!-- <input type="file" id="myFileInput" (change)="onFileSelected($event)" accept="image/*" hidden /> -->
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" />
+        <ion-button fill="clear" class="delete-image-button" (click)="deleteImage()">
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-button>
+      </div>
+      <div (click)="takePicture()" *ngIf="!imagePreview" class="image-container">
+        <div>
+          <div class="image-placement">
             <ion-icon name="images"></ion-icon>
           </div>
-          <div class="image-container">
-            <p>Tilføj billede her(valgfrit)</p>
-          </div>
+          <p>Tilføj billede her (valgfrit)</p>
         </div>
       </div>
 
+    </div>
 
-    <ion-button type="submit" size="small" color="secondary">Tilføj</ion-button>
+    <div class="button-placement">
+      <ion-button type="submit" size="small" color="secondary">Tilføj</ion-button>
+    </div>
   </form>
 </ion-content>

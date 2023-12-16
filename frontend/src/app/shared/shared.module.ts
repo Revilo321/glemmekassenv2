@@ -8,11 +8,12 @@ import { RegisterComponent } from '../components/register/register.component';
 import { ItemCardComponent } from '../components/item-card/item-card.component';
 import { SegmentControlComponent } from '../components/segment-control/segment-control.component';
 import { HeaderPageSectionComponent } from '../components/header-page-section/header-page-section.component';
+import { SearchBarComponent } from '../components/search-bar/search-bar.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, LoginComponent, RegisterComponent, ItemCardComponent, SegmentControlComponent, HeaderPageSectionComponent],
+  declarations: [HeaderComponent, LoginComponent, RegisterComponent, ItemCardComponent, SegmentControlComponent, HeaderPageSectionComponent, SearchBarComponent],
   imports: [
     CommonModule,
     IonicModule,
@@ -25,7 +26,8 @@ import { HeaderPageSectionComponent } from '../components/header-page-section/he
     RegisterComponent,
     ItemCardComponent,
     SegmentControlComponent,
-    HeaderPageSectionComponent
+    HeaderPageSectionComponent,
+    SearchBarComponent
   ]
 })
 export class SharedModule { }

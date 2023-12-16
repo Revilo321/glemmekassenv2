@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
@@ -92,6 +93,7 @@ export class CreatePage {
   }
 
   onSubmit() {
+    console.log(this.createForm)
     if (this.createForm.valid) {
       const formData = this.createForm.value;
       formData.uid = this.userObject.uid;
@@ -121,6 +123,8 @@ export class CreatePage {
       next: () => {
         this.toastService.presentSuccessToast('Dit opslag er blevet oprettet!');
         this.createForm.reset();
+        const currentDateAndTime = new Date();
+        this.createForm.get('dateTime')!.setValue(currentDateAndTime);
         this.imagePreview = null;
         this.selectedFile = null;
       },
@@ -147,5 +151,40 @@ export class CreatePage {
       reader.onload = e => this.imagePreview = reader.result;
       reader.readAsDataURL(this.selectedFile);
     }
+  }
+
+  async takePicture() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera
+      });
+  
+      this.convertToBlob(image);
+    } catch (error) {
+      console.error('Error taking picture:', error);
+    }
+  }
+  
+  async convertToBlob(photo: Photo) {
+    if (!photo.webPath) {
+      // Handle the case where webPath is undefined
+      this.imagePreview = null;
+      return;
+    }
+  
+    const response = await fetch(photo.webPath);
+    const blob = await response.blob();
+    const file = new File([blob], "image.jpeg", { type: "image/jpeg" });
+  
+    this.selectedFile = file;
+    this.imagePreview = photo.webPath;
+  }
+
+  deleteImage() {
+    this.imagePreview = null;
+    this.selectedFile = null;
   }
 }

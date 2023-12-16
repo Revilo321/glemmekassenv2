@@ -17,4 +17,8 @@ export class ItemService {
   createItem(formData: any) {
     return this.http.post(`${apiUrl}/api/items`,formData);
   }
+
+  getFilteredItems(zipcode: string): Observable<any>{
+    return this.http.get(`${apiUrl}/api/items?zipcode=${zipcode}`);
+  }
 }

@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize) => {
         location: {
             type: Sequelize.STRING
         },
+        zipcode: {
+            type: Sequelize.INTEGER
+        },
         dateTime: {
             type: Sequelize.DATE
         },
