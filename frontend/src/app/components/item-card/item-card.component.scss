@@ -9,10 +9,13 @@ ion-card {
     margin-bottom: 20px;
     box-shadow: none;
     background-color: #EFEFEF;
+    height: 100%;
+    max-height: fit-content;
 }
 
 p{
     font-size: 10px;
+    margin: 0;
 }
 strong {
     color: black;
@@ -37,7 +40,7 @@ ion-card-title{
 }
 
 ion-card-content{
-    padding: 0px 0px 5px 20px;
+    padding: 10px 0px 5px 20px;
 }
 
 .button-container{
@@ -50,9 +53,10 @@ ion-card-content{
 .checkout{
     padding-right: 10px;
     padding-top: 5px;
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
-    justify-content: end;
 }
 
 .auth-options{

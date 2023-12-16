@@ -1,0 +1,18 @@
+<div class="search-div">
+  <ion-searchbar
+    show-clear-button="never"
+    search-icon="none"
+    placeholder="Søg efter postnummer"
+    [(ngModel)]="searchQuery"
+    (ionChange)="onSearchChange()"
+    padding-end="0"
+  >
+  </ion-searchbar>
+  <ion-icon
+    class="search-icon"
+    color="secondary"
+    size="small"
+    name="search-circle"
+    (click)="onSearchChange()"
+  ></ion-icon>
+</div>

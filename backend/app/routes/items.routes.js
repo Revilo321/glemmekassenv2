@@ -4,6 +4,6 @@ module.exports = app => {
     var router = require("express").Router();
 
     router.get("/", items.findItems);
-    router.post("/lostitems", items.createLostItem)
+    router.post("/", items.createItem)
     app.use('/api/items', router);
 };

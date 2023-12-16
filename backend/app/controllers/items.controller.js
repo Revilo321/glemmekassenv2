@@ -1,23 +1,47 @@
 const db = require('../models')
-const LostItem = db.lostitem
+const Item = db.items
 const Op = db.Sequelize.Op
 
 exports.findItems = async (req, res) => {
   try {
-    const { type } = req.query
-    let items
-    if (type === 'lost') {
-      items = await LostItem.findAll()
-    } else if (type === 'found') {
-    }
-    res.send(items)
-  } catch (error) {
-    console.error('Error fetching messages:', error)
-    res.status(500).send(error)
-  }
-}
+    const { zipcode } = req.query;
+    let whereCondition = {};
 
-exports.createLostItem= async(req, res) => {
-    const lostItem = await LostItem.create(req.body);
-    res.status(201).json(lostItem);
-}
+    if (zipcode) {
+      const zipcodes = zipcode.split(',');
+      whereCondition.zipcode = zipcodes.length > 1 ? { [Op.in]: zipcodes } : zipcode;
+    }
+
+    const items = await Item.findAll({
+      where: whereCondition,
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.send(items);
+  } catch (error) {
+    console.error('Error fetching items', error);
+    res.status(500).send('An error occurred while fetching items');
+  }
+};
+
+exports.createItem = async (req, res) => {
+  try {
+    const { title, city, zipcode, dateTime, description, itemType, name, uid, imageUrl } = req.body;
+    
+    const newItem = await Item.create({
+      title,
+      location: city,
+      zipcode,
+      dateTime,
+      description,
+      itemType, 
+      name,
+      userUid: uid,
+      imageUrl
+    });
+    res.status(201).json(newItem);
+  } catch (error) {
+    console.error('Error creating item:', error);
+    res.status(500).json({ error: error.message || 'An error occurred while creating the item.' });
+  }
+};

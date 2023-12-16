@@ -10,7 +10,15 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
-  getItems(type: string): Observable<any> {
-    return this.http.get(`${apiUrl}/api/items?type=${type}`);
+  getItems(): Observable<any> {
+    return this.http.get(`${apiUrl}/api/items`);
+  }
+
+  createItem(formData: any) {
+    return this.http.post(`${apiUrl}/api/items`,formData);
+  }
+
+  getFilteredItems(zipcode: string): Observable<any>{
+    return this.http.get(`${apiUrl}/api/items?zipcode=${zipcode}`);
   }
 }

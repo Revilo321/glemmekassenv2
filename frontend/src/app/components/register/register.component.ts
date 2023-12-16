@@ -4,6 +4,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { errorMessages } from 'src/app/constants/errorMessages';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { ErrorMessages } from 'src/app/types/errorMessageType';
 
 @Component({
@@ -68,7 +69,7 @@ export class RegisterComponent {
     }
   ]
 
-  constructor(private authService: AuthService, private formService: FormService, private scroll: ViewportScroller) { 
+  constructor(private authService: AuthService, private formService: FormService, private scroll: ViewportScroller, private toastService: ToastService) { 
     this.registerForm = this.formService.createForm(this.inputFields);
   }
 
@@ -78,10 +79,10 @@ export class RegisterComponent {
     try {
       await this.authService.signUp(formValue);
       this.registerForm.reset();
-      this.registered.emit('Sådan, så er du registreret, du kan nu logge ind!')
+      this.toastService.presentSuccessToast('Sådan, så er du registreret, du kan nu logge ind!');
       this.scroll.scrollToPosition([0,0]);
     } catch (error) {
-      this.registered.emit('Noget gik galt, tjek formattering af email og password')
+      this.toastService.presentErrorToast('Noget gik galt, tjek formattering af email og password');
       console.error("Error during registration", error);
     }
   }

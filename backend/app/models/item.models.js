@@ -1,9 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const lostItem = sequelize.define('lostItem', {
+    const Item = sequelize.define('item', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
+        },
+        imageUrl: {
+            type: Sequelize.STRING,
+            allowNull: true
         },
         title: {
             type: Sequelize.STRING,
@@ -14,11 +18,18 @@ module.exports = (sequelize, Sequelize) => {
         location: {
             type: Sequelize.STRING
         },
+        zipcode: {
+            type: Sequelize.INTEGER
+        },
         dateTime: {
             type: Sequelize.DATE
         },
         description: {
             type: Sequelize.STRING
+        },
+        itemType: {
+            type: Sequelize.STRING,
+            allowNull: false
         },
         userUid: {
             type: Sequelize.STRING,
@@ -30,5 +41,5 @@ module.exports = (sequelize, Sequelize) => {
         }
     });
 
-    return lostItem;
+    return Item;
   };

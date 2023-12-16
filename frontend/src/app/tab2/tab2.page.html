@@ -1,17 +1,134 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <ion-grid>
+    <!-- PRESENTATION SEKTION -->
+    <ion-row>
+      <ion-col size="12" sizeMd="6">
+        <app-header-page-section 
+          title="Hvad er Glemmekassen?" 
+          subTitle="Ærlighed, venlighed og hjælpsomhed.">
+        </app-header-page-section>
+        <div class="mobile ion-hide-md-up">
+          <p>
+            Velkommen til Glemmekassen, hvor ærlighed, hjælpsomhed og venlighed er kernen i vores fællesskab. 
+            Vi er dedikerede til at skabe en platform, der forbinder mennesker og gør det lettere at håndtere mistede og fundne genstande.
+          </p>
+          <img src="../assets/find-lost-keys-metal-detector.png.webp" alt="keys dropped on the ground">
+          <p>
+            Glemmekassen er din digitale hjælper til at rapportere mistede genstande eller hjælpe andre ved at dele information om fundne genstande. 
+            Opret opslag for at være med til en hurtig og effektiv genforening mellem ejermand og genstand.
+          </p>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+        </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+        <p class="ion-hide-sm-down">
+          Velkommen til Glemmekassen, hvor ærlighed, hjælpsomhed og venlighed er kernen i vores fællesskab. 
+          Vi er dedikerede til at skabe en platform, der forbinder mennesker og gør det lettere at håndtere mistede og fundne genstande.<br><br>
+          Glemmekassen er din digitale hjælper til at rapportere mistede genstande eller hjælpe andre ved at dele information om fundne genstande. 
+          Opret opslag for at være med til en hurtig og effektiv genforening mellem ejermand og genstand.
+        </p>
+      </ion-col>
+
+      <ion-col  class="ion-hide-sm-down" sizeMd="6">
+        <img src="../assets/find-lost-keys-metal-detector.png.webp" alt="keys dropped on the ground">
+        <p>
+      </ion-col>
+    </ion-row>
+
+    <!-- FAQ SECTION -->
+    <ion-row>
+      <ion-col size="12">
+        <app-header-page-section 
+          title="Ofte stillede spørgsmål" 
+          subTitle="Her finder du svar på nogle af de spørgsmål, vi oftest modtager.">
+        </app-header-page-section>
+
+        <ion-accordion-group>
+
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-label class="label">Hvordan opretter jeg et opslag?</ion-label>
+            </ion-item>
+            <div class="ion-padding content" slot="content">For at oprette et opslag skal du være sikker på at du et logget ind på din brugerprofil. 
+              Du kan herefter oprette et opslag via menu-punktet “Tilføj”. Her har du mulighed for at vælge hvorvidt du vil oprette et opslag for en mistet 
+              eller funden genstand, og den yderligere information omkring genstanden.</div>
+          </ion-accordion>
+
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label class="label">Hvordan afslutter jeg et opslag?</ion-label>
+            </ion-item>
+            <div class="ion-padding content" slot="content">Dette gøres ved at gå ind på din brugerprofil. Her kan du finde en oversigt over egne opslag. 
+              I højre hjørne af hvert opslag findes en lille box der indikerer om dit opslag er aktivt. Klik denne box for at markere opslaget som afsluttet.
+            </div>
+          </ion-accordion>
+
+          <ion-accordion value="third">
+            <ion-item slot="header" color="light">
+              <ion-label class="label">Hvordan kan jeg komme i kontakt med jer?</ion-label>
+            </ion-item>
+            <div class="ion-padding content" slot="content">Det kan du på flere måder, bl.a. ved at ringe til os indenfor vores åbningstider
+              eller ved at sende os en mail. Disse oplysninger kan findes længere nede på denne side.
+            </div>
+          </ion-accordion>
+
+          <ion-accordion value="fourth">
+            <ion-item slot="header" color="light">
+              <ion-label class="label">Kan jeg ændre mit profilbillede?</ion-label>
+            </ion-item>
+            <div class="ion-padding content" slot="content">Dette kan gøres gennem din bruger profil. Åben din profil og klik på "Ændr profilbillede". 
+              Du har nu mulighed for at uploade et nyt profilbillede.
+            </div>
+          </ion-accordion>
+
+          <ion-accordion value="fifth">
+            <ion-item slot="header" color="light">
+              <ion-label class="label">Kan jeg lave et "mistet" opslag?</ion-label>
+            </ion-item>
+            <div class="ion-padding content" slot="content">Når du opretter et opslag, kan du vælge mellem fundet og mistet. Vælg blot "Mistet" og dit 
+              opslag vil være regisreret som værende et opslag over en mistet genstand.
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+
+        <p class="ion-padding-top ion-padding-bottom">
+          Fik du ikke svar på dit spørgsmål? Så skal du være velkommen til at kontakte os, og vi vil bestræbe os på at besvare din henvendelse
+          hurtigst muligt.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- CONTACT SECTION -->
+    <div class="contactsection">
+      <ion-row class="ion-padding-start ion-padding-end">
+        <ion-col size="12">
+          <app-header-page-section 
+          title="Kontakt" 
+          subTitle="Glemmekassen Support">
+          </app-header-page-section>
+
+          <h3><strong>Åbningstider:</strong><br>
+          Mandag - Fredag kl. 08.00 - 12.00</h3>
+
+          <p>
+            <strong>Telefon:</strong> +45 12345678<br>
+            <strong>E-mail:</strong> kontakt&#64;glemmekassen.dk<br>
+            <strong>Addresse:</strong> Maglegårdsvej 2, 4000 Roskilde
+         </p>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <!-- LINK SECTION -->
+    <ion-row class="ion-padding-top">
+      <ion-col size="12">
+        <app-header-page-section 
+          title="Praktiske links">
+        </app-header-page-section>
+
+         <!-- Links for Terms and Conditions and Fraud should be added here, once everything is merged in main -->
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>
+

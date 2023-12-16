@@ -1,13 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>create</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">create</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <app-header-page-section title="Tilføj et opslag"></app-header-page-section>
+    <div class="switch-container">
+  <app-segment-control (segmentChange)="handleSegmentChange($event)"></app-segment-control>
+</div>
+  <form [formGroup]="createForm" (submit)="onSubmit()">
+    <div *ngFor="let field of inputFields">
+      <ion-item class="ion-no-padding">
+        <ion-input
+          [label]="field.label"
+          labelPlacement="floating"
+          aria-label="field input"
+          *ngIf="field.type === 'text' || field.type === 'number'"
+          [type]="field.type"
+          [formControlName]="field.controlName"
+          [placeholder]="field.placeholder"
+        ></ion-input>
+        <ion-textarea
+          [label]="field.label"
+          labelPlacement="floating"
+          aria-label="field.label"
+          *ngIf="field.type === 'textarea'"
+          [formControlName]="field.controlName"
+          [placeholder]="field.placeholder"
+        ></ion-textarea>
+        <div *ngIf="field.type === 'dateTime'">
+          <ion-text>
+            Dato og tid
+          </ion-text>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        </div>
+      </ion-item>
+      <ion-text color="danger" *ngIf="createForm.get(field.controlName)!.invalid && (createForm.get(field.controlName)!.dirty || createForm.get(field.controlName)!.touched)">
+        <p class="error-message">
+          {{ getErrorMessage(field.controlName) }}
+        </p>
+      </ion-text>
+    </div>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime" (ionChange)="dateChanged($event)"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+    <div class="container">
+      <!-- <input type="file" id="myFileInput" (change)="onFileSelected($event)" accept="image/*" hidden /> -->
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" />
+        <ion-button fill="clear" class="delete-image-button" (click)="deleteImage()">
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-button>
+      </div>
+      <div (click)="takePicture()" *ngIf="!imagePreview" class="image-container">
+        <div>
+          <div class="image-placement">
+            <ion-icon name="images"></ion-icon>
+          </div>
+          <p>Tilføj billede her (valgfrit)</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="button-placement">
+      <ion-button type="submit" size="small" color="secondary">Tilføj</ion-button>
+    </div>
+  </form>
 </ion-content>

@@ -1,6 +1,41 @@
 <ion-content [fullscreen]="true">
-  <ion-text *ngIf="currentUser">Velkommen {{currentUser.displayName}}</ion-text>
-  <div *ngFor="let item of items">
-    <app-item-card [item]="item" [foundOrLost]="isLostItems" [currentUserUid]="currentUser?.uid!" ></app-item-card>
+  <app-header-page-section title="Glemmekassen" subTitle="Har du mistet noget eller måske fundet noget? Så er du kommet til det rette sted!" text="Glemmekassen er en platform hvor du har mulighed for at lede efter mistede genstande, eller finde ejermanden til fundne genstande." ></app-header-page-section>
+  <app-segment-control (segmentChange)="handleSegmentChange($event)"></app-segment-control>
+  <div class="searchbar-container" >
+    <app-search-bar (search)="applyZipcodeFilter($event)"></app-search-bar>
   </div>
+  <div class="filter-chips">
+    <ion-chip *ngFor="let filter of activeFilters" (click)="removeFilter(filter)">
+      <ion-label>{{ filter }}</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </div>
+  <ng-container *ngIf="!isLoading; else loadingSkeletons">
+    <div class="card-container" *ngFor="let item of filteredItems">
+      <app-item-card [item]="item" [currentUserUid]="currentUser?.uid!"></app-item-card>
+    </div>
+  </ng-container>
+
+  <ng-template #loadingSkeletons>
+    <div class="card-container" *ngFor="let i of [].constructor(5)">
+      <ion-card>
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="4">
+              <ion-skeleton-text class="ion-no-margin" animated style="width: 100%; height: 100px;"></ion-skeleton-text>
+            </ion-col>
+            <ion-col>
+              <ion-card-content class="ion-no-padding skeleton-card-content">
+                <ion-card-title><ion-skeleton-text animated style="width: 80%; height: 15px;"></ion-skeleton-text></ion-card-title>
+                <p><ion-skeleton-text animated style="width: 20%; height: 10px;"></ion-skeleton-text></p>
+                <p><ion-skeleton-text animated style="width: 40%; height: 10px;"></ion-skeleton-text></p>
+                <p><ion-skeleton-text animated style="width: 30%; height: 10px;"></ion-skeleton-text></p>
+                <p><ion-skeleton-text animated style="width: 70%; height: 10px;"></ion-skeleton-text></p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </ng-template>
 </ion-content>
