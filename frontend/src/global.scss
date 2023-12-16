@@ -25,10 +25,21 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: #283f5d;
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 12px;
+}
 
 ion-content{
-    --padding-start: 30px;
-    --padding-end: 30px;
+    --padding-top: 5px;
+    --padding-start: 15px;
+    --padding-end: 15px;
     --background-color: #f7f7f7;
 }
 
