@@ -29,7 +29,7 @@
     <div class="chat-container">
       <div *ngFor="let message of messages">
         <div *ngIf="!isMyMessage(message)" class="sender-name">
-          {{ message.senderName }}
+          {{ senderName }}
         </div>
         <div
           [ngClass]="{
@@ -56,7 +56,8 @@
 <ion-footer [translucent]="true" class="ion-no-border">
     <ion-item lines="none">
       <ion-input
-      class="custom"
+        class="custom"
+        (keyup.enter)="sendMessage()"
         (ionFocus)="startTyping()"
         (ionBlur)="stopTyping()"
         type="text"

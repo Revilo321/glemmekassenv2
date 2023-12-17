@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> <h1>Hov!</h1></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Luk</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p>Du er nødt til at logge ind eller registrere dig som bruger for at få lov til at bruge denne feature. Tryk på knappen for at komme igang!</p>
+  <ion-button color="secondary" expand="full" (click)="navigateToLogin()">Gå til registrering/log ind</ion-button>
+</ion-content>
