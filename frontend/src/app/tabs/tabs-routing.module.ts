@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,19 +26,23 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
+        loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'create',
-        loadChildren: () => import('../pages/create/create.module').then(m => m.CreatePageModule)
+        loadChildren: () => import('../pages/create/create.module').then(m => m.CreatePageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'chat-overview',
-        loadChildren: () => import('../pages/chat-overview/chat-overview.module').then(m => m.ChatOverviewPageModule)
+        loadChildren: () => import('../pages/chat-overview/chat-overview.module').then(m => m.ChatOverviewPageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'messages/:id',
-        loadChildren: () => import('../pages/messages/messages.module').then(m => m.MessagesPageModule)
+        loadChildren: () => import('../pages/messages/messages.module').then(m => m.MessagesPageModule),
+        canActivate: [AuthGuard]
       },
       {
         path: '',

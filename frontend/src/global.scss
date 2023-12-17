@@ -38,7 +38,23 @@ h2, h3 {
     font-size: 1.1em;
 }
 
+ion-button{
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-input {
+    --ion-font-family: 'Montserrat', sans-serif;
+}
+ion-searchbar {
+    --ion-font-family: 'Montserrat', sans-serif;
+}
+
+ion-label{
+    font-family: 'Verdana', sans-serif;
+}
+
 p {
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
 }
 
