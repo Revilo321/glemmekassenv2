@@ -80,8 +80,8 @@ export class MessagesPage implements OnInit {
   }
 
   fetchMessages(currentUserUid: string, otherUserUid: string) {
-    this.chatService.getConversation(currentUserUid, otherUserUid).subscribe(
-      (messages) => {
+    this.chatService.getConversation(currentUserUid, otherUserUid).subscribe({
+      next: messages => {
         this.messages = messages.map((message: any) => ({
           senderId: message.senderId,
           receiverId: message.receiverId,
@@ -91,7 +91,10 @@ export class MessagesPage implements OnInit {
         }));
         this.isLoading = false;
       },
-      (error) => console.error('Error fetching messages:', error)
+      error: (err: any) => {
+        console.log("Error fetching messages",err)
+      }
+    }
     );
   }
 
