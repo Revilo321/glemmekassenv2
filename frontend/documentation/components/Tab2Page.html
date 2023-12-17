@@ -1,0 +1,500 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  Tab2Page</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/tab2/tab2.page.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-tab2</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>tab2.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>tab2.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/tab2/tab2.page.ts:8</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;app-tab2&#x27;,
+  templateUrl: &#x27;tab2.page.html&#x27;,
+  styleUrls: [&#x27;tab2.page.scss&#x27;]
+})
+export class Tab2Page {
+
+  constructor() {}
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-content&gt;
+  &lt;ion-grid&gt;
+    &lt;!-- PRESENTATION SEKTION --&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot; sizeMd&#x3D;&quot;6&quot;&gt;
+        &lt;app-header-page-section 
+          title&#x3D;&quot;Hvad er Glemmekassen?&quot; 
+          subTitle&#x3D;&quot;Ærlighed, venlighed og hjælpsomhed.&quot;&gt;
+        &lt;/app-header-page-section&gt;
+        &lt;div class&#x3D;&quot;mobile ion-hide-md-up&quot;&gt;
+          &lt;p&gt;
+            Velkommen til Glemmekassen, hvor ærlighed, hjælpsomhed og venlighed er kernen i vores fællesskab. 
+            Vi er dedikerede til at skabe en platform, der forbinder mennesker og gør det lettere at håndtere mistede og fundne genstande.
+          &lt;/p&gt;
+          &lt;img src&#x3D;&quot;../assets/find-lost-keys-metal-detector.png.webp&quot; alt&#x3D;&quot;keys dropped on the ground&quot;&gt;
+          &lt;p&gt;
+            Glemmekassen er din digitale hjælper til at rapportere mistede genstande eller hjælpe andre ved at dele information om fundne genstande. 
+            Opret opslag for at være med til en hurtig og effektiv genforening mellem ejermand og genstand.
+          &lt;/p&gt;
+
+        &lt;/div&gt;
+
+        &lt;p class&#x3D;&quot;ion-hide-sm-down&quot;&gt;
+          Velkommen til Glemmekassen, hvor ærlighed, hjælpsomhed og venlighed er kernen i vores fællesskab. 
+          Vi er dedikerede til at skabe en platform, der forbinder mennesker og gør det lettere at håndtere mistede og fundne genstande.&lt;br&gt;&lt;br&gt;
+          Glemmekassen er din digitale hjælper til at rapportere mistede genstande eller hjælpe andre ved at dele information om fundne genstande. 
+          Opret opslag for at være med til en hurtig og effektiv genforening mellem ejermand og genstand.
+        &lt;/p&gt;
+      &lt;/ion-col&gt;
+
+      &lt;ion-col  class&#x3D;&quot;ion-hide-sm-down&quot; sizeMd&#x3D;&quot;6&quot;&gt;
+        &lt;img src&#x3D;&quot;../assets/find-lost-keys-metal-detector.png.webp&quot; alt&#x3D;&quot;keys dropped on the ground&quot;&gt;
+        &lt;p&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+
+    &lt;!-- FAQ SECTION --&gt;
+    &lt;ion-row&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot;&gt;
+        &lt;app-header-page-section 
+          title&#x3D;&quot;Ofte stillede spørgsmål&quot; 
+          subTitle&#x3D;&quot;Her finder du svar på nogle af de spørgsmål, vi oftest modtager.&quot;&gt;
+        &lt;/app-header-page-section&gt;
+
+        &lt;ion-accordion-group&gt;
+
+          &lt;ion-accordion value&#x3D;&quot;first&quot;&gt;
+            &lt;ion-item slot&#x3D;&quot;header&quot; color&#x3D;&quot;light&quot;&gt;
+              &lt;ion-label class&#x3D;&quot;label&quot;&gt;Hvordan opretter jeg et opslag?&lt;/ion-label&gt;
+            &lt;/ion-item&gt;
+            &lt;div class&#x3D;&quot;ion-padding content&quot; slot&#x3D;&quot;content&quot;&gt;For at oprette et opslag skal du være sikker på at du et logget ind på din brugerprofil. 
+              Du kan herefter oprette et opslag via menu-punktet “Tilføj”. Her har du mulighed for at vælge hvorvidt du vil oprette et opslag for en mistet 
+              eller funden genstand, og den yderligere information omkring genstanden.&lt;/div&gt;
+          &lt;/ion-accordion&gt;
+
+          &lt;ion-accordion value&#x3D;&quot;second&quot;&gt;
+            &lt;ion-item slot&#x3D;&quot;header&quot; color&#x3D;&quot;light&quot;&gt;
+              &lt;ion-label class&#x3D;&quot;label&quot;&gt;Hvordan afslutter jeg et opslag?&lt;/ion-label&gt;
+            &lt;/ion-item&gt;
+            &lt;div class&#x3D;&quot;ion-padding content&quot; slot&#x3D;&quot;content&quot;&gt;Dette gøres ved at gå ind på din brugerprofil. Her kan du finde en oversigt over egne opslag. 
+              I højre hjørne af hvert opslag findes en lille box der indikerer om dit opslag er aktivt. Klik denne box for at markere opslaget som afsluttet.
+            &lt;/div&gt;
+          &lt;/ion-accordion&gt;
+
+          &lt;ion-accordion value&#x3D;&quot;third&quot;&gt;
+            &lt;ion-item slot&#x3D;&quot;header&quot; color&#x3D;&quot;light&quot;&gt;
+              &lt;ion-label class&#x3D;&quot;label&quot;&gt;Hvordan kan jeg komme i kontakt med jer?&lt;/ion-label&gt;
+            &lt;/ion-item&gt;
+            &lt;div class&#x3D;&quot;ion-padding content&quot; slot&#x3D;&quot;content&quot;&gt;Det kan du på flere måder, bl.a. ved at ringe til os indenfor vores åbningstider
+              eller ved at sende os en mail. Disse oplysninger kan findes længere nede på denne side.
+            &lt;/div&gt;
+          &lt;/ion-accordion&gt;
+
+          &lt;ion-accordion value&#x3D;&quot;fourth&quot;&gt;
+            &lt;ion-item slot&#x3D;&quot;header&quot; color&#x3D;&quot;light&quot;&gt;
+              &lt;ion-label class&#x3D;&quot;label&quot;&gt;Kan jeg ændre mit profilbillede?&lt;/ion-label&gt;
+            &lt;/ion-item&gt;
+            &lt;div class&#x3D;&quot;ion-padding content&quot; slot&#x3D;&quot;content&quot;&gt;Dette kan gøres gennem din bruger profil. Åben din profil og klik på &quot;Ændr profilbillede&quot;. 
+              Du har nu mulighed for at uploade et nyt profilbillede.
+            &lt;/div&gt;
+          &lt;/ion-accordion&gt;
+
+          &lt;ion-accordion value&#x3D;&quot;fifth&quot;&gt;
+            &lt;ion-item slot&#x3D;&quot;header&quot; color&#x3D;&quot;light&quot;&gt;
+              &lt;ion-label class&#x3D;&quot;label&quot;&gt;Kan jeg lave et &quot;mistet&quot; opslag?&lt;/ion-label&gt;
+            &lt;/ion-item&gt;
+            &lt;div class&#x3D;&quot;ion-padding content&quot; slot&#x3D;&quot;content&quot;&gt;Når du opretter et opslag, kan du vælge mellem fundet og mistet. Vælg blot &quot;Mistet&quot; og dit 
+              opslag vil være regisreret som værende et opslag over en mistet genstand.
+            &lt;/div&gt;
+          &lt;/ion-accordion&gt;
+        &lt;/ion-accordion-group&gt;
+
+        &lt;p class&#x3D;&quot;ion-padding-top ion-padding-bottom&quot;&gt;
+          Fik du ikke svar på dit spørgsmål? Så skal du være velkommen til at kontakte os, og vi vil bestræbe os på at besvare din henvendelse
+          hurtigst muligt.
+        &lt;/p&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+
+    &lt;!-- CONTACT SECTION --&gt;
+    &lt;div class&#x3D;&quot;contactsection&quot;&gt;
+      &lt;ion-row class&#x3D;&quot;ion-padding-start ion-padding-end&quot;&gt;
+        &lt;ion-col size&#x3D;&quot;12&quot;&gt;
+          &lt;app-header-page-section 
+          title&#x3D;&quot;Kontakt&quot; 
+          subTitle&#x3D;&quot;Glemmekassen Support&quot;&gt;
+          &lt;/app-header-page-section&gt;
+
+          &lt;h3&gt;&lt;strong&gt;Åbningstider:&lt;/strong&gt;&lt;br&gt;
+          Mandag - Fredag kl. 08.00 - 12.00&lt;/h3&gt;
+
+          &lt;p&gt;
+            &lt;strong&gt;Telefon:&lt;/strong&gt; +45 12345678&lt;br&gt;
+            &lt;strong&gt;E-mail:&lt;/strong&gt; kontakt&amp;#64;glemmekassen.dk&lt;br&gt;
+            &lt;strong&gt;Addresse:&lt;/strong&gt; Maglegårdsvej 2, 4000 Roskilde
+         &lt;/p&gt;
+        &lt;/ion-col&gt;
+      &lt;/ion-row&gt;
+    &lt;/div&gt;
+
+    &lt;!-- LINK SECTION --&gt;
+    &lt;ion-row class&#x3D;&quot;ion-padding-top&quot;&gt;
+      &lt;ion-col size&#x3D;&quot;12&quot;&gt;
+        &lt;app-header-page-section 
+          title&#x3D;&quot;Praktiske links&quot;&gt;
+        &lt;/app-header-page-section&gt;
+
+         &lt;!-- Links for Terms and Conditions and Fraud should be added here, once everything is merged in main --&gt;
+      &lt;/ion-col&gt;
+    &lt;/ion-row&gt;
+
+  &lt;/ion-grid&gt;
+&lt;/ion-content&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>tab2.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.content {
+    font-size: 12px;
+    --color: #333333;
+}
+
+.label {
+    font-size: 12px;
+    --color: #333333;
+}
+
+.contactsection {
+    background-color: #EFEFEF;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    color: #283f5d;
+    font-size: 14px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content>  <ion-grid>    <!-- PRESENTATION SEKTION -->    <ion-row>      <ion-col size="12" sizeMd="6">        <app-header-page-section           title="Hvad er Glemmekassen?"           subTitle="Ærlighed, venlighed og hjælpsomhed.">        </app-header-page-section>        <div class="mobile ion-hide-md-up">          <p>            Velkommen til Glemmekassen, hvor ærlighed, hjælpsomhed og venlighed er kernen i vores fællesskab.             Vi er dedikerede til at skabe en platform, der forbinder mennesker og gør det lettere at håndtere mistede og fundne genstande.          </p>          <img src="../assets/find-lost-keys-metal-detector.png.webp" alt="keys dropped on the ground">          <p>            Glemmekassen er din digitale hjælper til at rapportere mistede genstande eller hjælpe andre ved at dele information om fundne genstande.             Opret opslag for at være med til en hurtig og effektiv genforening mellem ejermand og genstand.          </p>        </div>        <p class="ion-hide-sm-down">          Velkommen til Glemmekassen, hvor ærlighed, hjælpsomhed og venlighed er kernen i vores fællesskab.           Vi er dedikerede til at skabe en platform, der forbinder mennesker og gør det lettere at håndtere mistede og fundne genstande.<br><br>          Glemmekassen er din digitale hjælper til at rapportere mistede genstande eller hjælpe andre ved at dele information om fundne genstande.           Opret opslag for at være med til en hurtig og effektiv genforening mellem ejermand og genstand.        </p>      </ion-col>      <ion-col  class="ion-hide-sm-down" sizeMd="6">        <img src="../assets/find-lost-keys-metal-detector.png.webp" alt="keys dropped on the ground">        <p>      </ion-col>    </ion-row>    <!-- FAQ SECTION -->    <ion-row>      <ion-col size="12">        <app-header-page-section           title="Ofte stillede spørgsmål"           subTitle="Her finder du svar på nogle af de spørgsmål, vi oftest modtager.">        </app-header-page-section>        <ion-accordion-group>          <ion-accordion value="first">            <ion-item slot="header" color="light">              <ion-label class="label">Hvordan opretter jeg et opslag?</ion-label>            </ion-item>            <div class="ion-padding content" slot="content">For at oprette et opslag skal du være sikker på at du et logget ind på din brugerprofil.               Du kan herefter oprette et opslag via menu-punktet “Tilføj”. Her har du mulighed for at vælge hvorvidt du vil oprette et opslag for en mistet               eller funden genstand, og den yderligere information omkring genstanden.</div>          </ion-accordion>          <ion-accordion value="second">            <ion-item slot="header" color="light">              <ion-label class="label">Hvordan afslutter jeg et opslag?</ion-label>            </ion-item>            <div class="ion-padding content" slot="content">Dette gøres ved at gå ind på din brugerprofil. Her kan du finde en oversigt over egne opslag.               I højre hjørne af hvert opslag findes en lille box der indikerer om dit opslag er aktivt. Klik denne box for at markere opslaget som afsluttet.            </div>          </ion-accordion>          <ion-accordion value="third">            <ion-item slot="header" color="light">              <ion-label class="label">Hvordan kan jeg komme i kontakt med jer?</ion-label>            </ion-item>            <div class="ion-padding content" slot="content">Det kan du på flere måder, bl.a. ved at ringe til os indenfor vores åbningstider              eller ved at sende os en mail. Disse oplysninger kan findes længere nede på denne side.            </div>          </ion-accordion>          <ion-accordion value="fourth">            <ion-item slot="header" color="light">              <ion-label class="label">Kan jeg ændre mit profilbillede?</ion-label>            </ion-item>            <div class="ion-padding content" slot="content">Dette kan gøres gennem din bruger profil. Åben din profil og klik på "Ændr profilbillede".               Du har nu mulighed for at uploade et nyt profilbillede.            </div>          </ion-accordion>          <ion-accordion value="fifth">            <ion-item slot="header" color="light">              <ion-label class="label">Kan jeg lave et "mistet" opslag?</ion-label>            </ion-item>            <div class="ion-padding content" slot="content">Når du opretter et opslag, kan du vælge mellem fundet og mistet. Vælg blot "Mistet" og dit               opslag vil være regisreret som værende et opslag over en mistet genstand.            </div>          </ion-accordion>        </ion-accordion-group>        <p class="ion-padding-top ion-padding-bottom">          Fik du ikke svar på dit spørgsmål? Så skal du være velkommen til at kontakte os, og vi vil bestræbe os på at besvare din henvendelse          hurtigst muligt.        </p>      </ion-col>    </ion-row>    <!-- CONTACT SECTION -->    <div class="contactsection">      <ion-row class="ion-padding-start ion-padding-end">        <ion-col size="12">          <app-header-page-section           title="Kontakt"           subTitle="Glemmekassen Support">          </app-header-page-section>          <h3><strong>Åbningstider:</strong><br>          Mandag - Fredag kl. 08.00 - 12.00</h3>          <p>            <strong>Telefon:</strong> +45 12345678<br>            <strong>E-mail:</strong> kontakt&#64;glemmekassen.dk<br>            <strong>Addresse:</strong> Maglegårdsvej 2, 4000 Roskilde         </p>        </ion-col>      </ion-row>    </div>    <!-- LINK SECTION -->    <ion-row class="ion-padding-top">      <ion-col size="12">        <app-header-page-section           title="Praktiske links">        </app-header-page-section>         <!-- Links for Terms and Conditions and Fraud should be added here, once everything is merged in main -->      </ion-col>    </ion-row>  </ion-grid></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatOverviewPage', 'selector': 'app-chat-overview'},{'name': 'CreatePage', 'selector': 'app-create'},{'name': 'ExploreContainerComponent', 'selector': 'app-explore-container'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderPageSectionComponent', 'selector': 'app-header-page-section'},{'name': 'InfoModalComponent', 'selector': 'app-info-modal'},{'name': 'ItemCardComponent', 'selector': 'app-item-card'},{'name': 'LoginComponent', 'selector': 'app-login-component'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MessagesPage', 'selector': 'app-messages'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SegmentControlComponent', 'selector': 'app-segment-control'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TermsAndConditionsPage', 'selector': 'app-terms-and-conditions'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'Tab2Page'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'Tab2Page.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

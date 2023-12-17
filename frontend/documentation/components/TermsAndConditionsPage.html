@@ -1,0 +1,533 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TermsAndConditionsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/terms-and-conditions/terms-and-conditions.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-terms-and-conditions</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./terms-and-conditions.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./terms-and-conditions.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/pages/terms-and-conditions/terms-and-conditions.page.ts:8</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="12"
+                                    class="link-to-prism">src/app/pages/terms-and-conditions/terms-and-conditions.page.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;app-terms-and-conditions&#x27;,
+  templateUrl: &#x27;./terms-and-conditions.page.html&#x27;,
+  styleUrls: [&#x27;./terms-and-conditions.page.scss&#x27;],
+})
+export class TermsAndConditionsPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-content&gt;
+
+  &lt;h1&gt;Regler og vilkår&lt;/h1&gt;
+  &lt;h2&gt;Regler og Vilkår for Brug af Glemmekassen&lt;/h2&gt;
+  
+  &lt;div class&#x3D;&quot;update&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Dato for seneste opdatering&lt;/strong&gt; 3/12-23&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;p&gt;
+    Ved at bruge Glemmekassen (&quot;App&#x27;en) accepterer du følgende regler og vilkår for brug:
+  &lt;/p&gt;
+
+  &lt;div&gt;
+    &lt;h2&gt;1. Generelt&lt;/h2&gt;
+
+    &lt;p&gt;
+      &lt;strong&gt;1.1.&lt;/strong&gt; 
+      Du skal være mindst 13 år gammel for at bruge denne app.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      &lt;strong&gt;1.2.&lt;/strong&gt; 
+      Glemmekassen er kun beregnet til at hjælpe brugere med at rapportere mistede og fundne genstande og lette kommunikation mellem brugere.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;h2&gt;2. Brugeroprettelse&lt;/h2&gt;
+
+    &lt;p&gt;
+      &lt;strong&gt;2.1.&lt;/strong&gt; 
+      Du skal oprette en brugerprofil for at kunne bruge alle funktioner i app&#x27;en.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      &lt;strong&gt;2.2.&lt;/strong&gt; 
+      Alle oplysninger, du giver i forbindelse med oprettelse af din brugerprofil, skal være korrekte og opdaterede.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;h2&gt;3. Opslag og kommunikation&lt;/h2&gt;
+
+    &lt;p&gt;
+      &lt;strong&gt;3.1.&lt;/strong&gt; 
+      Ved at oprette opslag om mistede eller fundne genstande accepterer du, at dine oplysninger (lokation, tid, billeder osv.) deles med andre brugere.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      &lt;strong&gt;3.2.&lt;/strong&gt; 
+      Du er ansvarlig for nøjagtigheden af de oplysninger, du deler, og du må ikke misbruge app&#x27;en til ulovlige eller stødende formål.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;h2&gt;4. Personlig sikkerhed&lt;/h2&gt;
+
+    &lt;p&gt;
+      &lt;strong&gt;4.1.&lt;/strong&gt; 
+      Undlad at dele personlige oplysninger, der kan bruges til at identificere dig uden for app&#x27;en.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      &lt;strong&gt;4.2.&lt;/strong&gt; 
+      Vi anbefaler, at du tager forholdsregler, når du møder andre brugere i forbindelse med mistede genstande.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;h2&gt;5. Ansvar&lt;/h2&gt;
+
+    &lt;p&gt;
+      &lt;strong&gt;5.1.&lt;/strong&gt; 
+      App&#x27;en og dets udviklere påtager sig ikke ansvar for mistede genstande, fejl i oplysninger eller eventuelle konsekvenser af brugen af app&#x27;en.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      &lt;strong&gt;5.2.&lt;/strong&gt; 
+      Brug app&#x27;en på eget ansvar, og sørg for at træffe de nødvendige forholdsregler for din personlige sikkerhed.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;h2&gt;6. Ændringer og opdateringer&lt;/h2&gt;
+
+    &lt;p&gt;
+      &lt;strong&gt;6.1.&lt;/strong&gt; 
+      Glemmekassen forbeholder sig retten til at ændre eller opdatere regler og vilkår uden forudgående varsel.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      &lt;strong&gt;6.2.&lt;/strong&gt; 
+      Det er brugerens ansvar at holde sig opdateret om ændringer i regler og vilkår.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;br&gt;
+
+  &lt;div&gt;
+    &lt;p&gt;
+      Ved at bruge Glemmekassen accepterer du fuldt ud disse regler og vilkår. Hvis du ikke accepterer dem, bedes du afstå fra at bruge app’en.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Hvis du har spørgsmål eller bekymringer, kontakt os venligst på kontakt&amp;#64;glemmekassen.dk.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./terms-and-conditions.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.update {
+  font-size: .7rem;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content>  <h1>Regler og vilkår</h1>  <h2>Regler og Vilkår for Brug af Glemmekassen</h2>    <div class="update">    <p><strong>Dato for seneste opdatering</strong> 3/12-23</p>  </div>  <p>    Ved at bruge Glemmekassen ("App\'en) accepterer du følgende regler og vilkår for brug:  </p>  <div>    <h2>1. Generelt</h2>    <p>      <strong>1.1.</strong>       Du skal være mindst 13 år gammel for at bruge denne app.    </p>      <p>      <strong>1.2.</strong>       Glemmekassen er kun beregnet til at hjælpe brugere med at rapportere mistede og fundne genstande og lette kommunikation mellem brugere.    </p>  </div>  <div>    <h2>2. Brugeroprettelse</h2>    <p>      <strong>2.1.</strong>       Du skal oprette en brugerprofil for at kunne bruge alle funktioner i app\'en.    </p>      <p>      <strong>2.2.</strong>       Alle oplysninger, du giver i forbindelse med oprettelse af din brugerprofil, skal være korrekte og opdaterede.    </p>  </div>  <div>    <h2>3. Opslag og kommunikation</h2>    <p>      <strong>3.1.</strong>       Ved at oprette opslag om mistede eller fundne genstande accepterer du, at dine oplysninger (lokation, tid, billeder osv.) deles med andre brugere.    </p>      <p>      <strong>3.2.</strong>       Du er ansvarlig for nøjagtigheden af de oplysninger, du deler, og du må ikke misbruge app\'en til ulovlige eller stødende formål.    </p>  </div>  <div>    <h2>4. Personlig sikkerhed</h2>    <p>      <strong>4.1.</strong>       Undlad at dele personlige oplysninger, der kan bruges til at identificere dig uden for app\'en.    </p>      <p>      <strong>4.2.</strong>       Vi anbefaler, at du tager forholdsregler, når du møder andre brugere i forbindelse med mistede genstande.    </p>  </div>  <div>    <h2>5. Ansvar</h2>    <p>      <strong>5.1.</strong>       App\'en og dets udviklere påtager sig ikke ansvar for mistede genstande, fejl i oplysninger eller eventuelle konsekvenser af brugen af app\'en.    </p>      <p>      <strong>5.2.</strong>       Brug app\'en på eget ansvar, og sørg for at træffe de nødvendige forholdsregler for din personlige sikkerhed.    </p>  </div>  <div>    <h2>6. Ændringer og opdateringer</h2>    <p>      <strong>6.1.</strong>       Glemmekassen forbeholder sig retten til at ændre eller opdatere regler og vilkår uden forudgående varsel.    </p>      <p>      <strong>6.2.</strong>       Det er brugerens ansvar at holde sig opdateret om ændringer i regler og vilkår.    </p>  </div>  <br>  <div>    <p>      Ved at bruge Glemmekassen accepterer du fuldt ud disse regler og vilkår. Hvis du ikke accepterer dem, bedes du afstå fra at bruge app’en.    </p>    <p>      Hvis du har spørgsmål eller bekymringer, kontakt os venligst på kontakt&#64;glemmekassen.dk.    </p>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatOverviewPage', 'selector': 'app-chat-overview'},{'name': 'CreatePage', 'selector': 'app-create'},{'name': 'ExploreContainerComponent', 'selector': 'app-explore-container'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderPageSectionComponent', 'selector': 'app-header-page-section'},{'name': 'InfoModalComponent', 'selector': 'app-info-modal'},{'name': 'ItemCardComponent', 'selector': 'app-item-card'},{'name': 'LoginComponent', 'selector': 'app-login-component'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MessagesPage', 'selector': 'app-messages'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SearchBarComponent', 'selector': 'app-search-bar'},{'name': 'SegmentControlComponent', 'selector': 'app-segment-control'},{'name': 'Tab1Page', 'selector': 'app-tab1'},{'name': 'Tab2Page', 'selector': 'app-tab2'},{'name': 'Tab3Page', 'selector': 'app-tab3'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'TermsAndConditionsPage', 'selector': 'app-terms-and-conditions'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TermsAndConditionsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TermsAndConditionsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
