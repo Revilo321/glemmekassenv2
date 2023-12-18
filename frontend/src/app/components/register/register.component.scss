@@ -7,3 +7,15 @@ ion-button{
 .form-group{
     margin-bottom: 30px;
 }
+
+.checkbox{
+    display: flex;
+    margin-bottom: 10px;
+    ion-label {
+        margin-left: 10px;
+    }
+}
+
+ion-checkbox {
+    --border-radius: 5px;
+}

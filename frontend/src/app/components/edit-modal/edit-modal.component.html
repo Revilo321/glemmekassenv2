@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> <h1>Redigér</h1></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Luk</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-create-post [editData]="post"/>
+</ion-content>

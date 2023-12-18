@@ -1,12 +1,45 @@
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-grid>
-    <ion-button (click)="logOut()">
-      Log ud
-    </ion-button>
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">profile</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <ion-row>
+      <ion-col size="12">
+        <!-- Profile Header -->
+        <ion-card-header>
+          <ion-card-subtitle>
+            <h1>
+              DIN PROFIL
+            </h1>
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-avatar class="profile-avatar">
+          <img src="/frontend/src/assets/mock_user_male.png" />
+        </ion-avatar>
+        <h2 class="textleft">Kontakt info</h2>
+        <ion-card class="profile-header">
+          <ion-card-content class="textleft">
+            <h2>Navn: {{ user.name }}</h2>
+            <h3>Tlf: {{ phoneNumber }}</h3>
+            <h3>E-Mail: {{ user.email }}</h3>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Log Out Button -->
+        <ion-row>
+          <ion-col size="12" class="ion-padding">
+            <ion-button (click)="logOut()" expand="block" shape="round">
+              Log ud
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-col>
+           <h1>
+                DINE OPSLAG
+              </h1>
+          <div *ngFor="let post of posts">
+            <app-item-card (itemUpdated)="fetchItems()" [item]="post" [currentUserUid]="userID"></app-item-card>
+          </div>
+        </ion-col>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>

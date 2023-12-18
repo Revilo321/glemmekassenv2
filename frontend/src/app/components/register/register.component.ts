@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { errorMessages } from 'src/app/constants/errorMessages';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormService } from 'src/app/services/form.service';
@@ -50,7 +50,7 @@ export class RegisterComponent {
       label: 'Alder',
       controlName: 'age',
       type: 'number',
-      placeholder: 'Telefonnummer',
+      placeholder: 'Alder',
       validators: [Validators.required]
     },
     {
@@ -71,6 +71,7 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService, private formService: FormService, private scroll: ViewportScroller, private toastService: ToastService) { 
     this.registerForm = this.formService.createForm(this.inputFields);
+    this.registerForm.addControl('termsAccepted', new FormControl(false, Validators.requiredTrue));
   }
 
 

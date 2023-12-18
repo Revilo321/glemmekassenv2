@@ -6,5 +6,7 @@ module.exports = app => {
     router.post("/", user.create);
     router.get('/name/:uid', user.getUserName)
     router.get("/chats/:id", user.findChats)
+    router.get("/:id", user.getUser);
     app.use('/api/user', router);
+   
 };

@@ -14,11 +14,23 @@ export class ItemService {
     return this.http.get(`${apiUrl}/api/items`);
   }
 
+  getItemsOnUid(uid: string): Observable<any> {
+    return this.http.get(`${apiUrl}/api/items/user/${uid}`);
+  }
+
+  updateItem(id: number,formData: any){
+    return this.http.put(`${apiUrl}/api/items/${id}`,formData);
+  }
+
   createItem(formData: any) {
     return this.http.post(`${apiUrl}/api/items`,formData);
   }
 
   getFilteredItems(zipcode: string): Observable<any>{
     return this.http.get(`${apiUrl}/api/items?zipcode=${zipcode}`);
+  }
+
+  deleteItem(id: number){
+    return this.http.delete(`${apiUrl}/api/items/${id}`);
   }
 }

@@ -49,10 +49,18 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'terms-and-conditions',
+        loadChildren: () => import('../pages/terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsPageModule),
+      },
+      {
+        path: 'report',
+        loadChildren: () => import('../pages/report/report.module').then(m => m.ReportPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
-      }
+      },
     ]
   },
   {

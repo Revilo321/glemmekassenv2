@@ -1,0 +1,21 @@
+.profile-header {
+    ion-card-header {
+      text-align: center;
+      ion-card-subtitle {
+        font-size: 1.2rem;
+        display: block;
+      }
+    }
+  }
+  
+  .profile-avatar {
+    --ion-avatar-size: 10rem; // Adjust size as needed
+    margin: 0 auto 20px; // Adds space below the avatar
+    display: block; // Centers the avatar
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%; // Makes image round
+    }
+  }

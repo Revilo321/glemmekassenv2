@@ -8,5 +8,14 @@
   <div class="form-group">
       <ion-input *ngFor="let field of inputFields" [helperText]="field.helperText ? field.helperText : null" [errorText]="getErrorMessage(field.controlName)" [label]="field.label" labelPlacement="floating" [type]="field.type" [formControlName]="field.controlName" [placeholder]="field.placeholder"></ion-input>
   </div>
-  <ion-button expand="block" size="small" color="secondary" type="submit">Opret bruger</ion-button>
+
+  <div class="checkbox">
+    <ion-checkbox slot="start" formControlName="termsAccepted"></ion-checkbox>
+    <ion-label> <span>Jeg accepterer </span>
+      <a [routerLink]="'/tabs/terms-and-conditions'">vilkårene og betingelserne</a></ion-label>
+  </div>
+  <ion-text color="danger" *ngIf="registerForm.get('termsAccepted')?.invalid && registerForm.get('termsAccepted')?.touched">
+    Du skal acceptere vilkårene og betingelserne for at fortsætte.
+  </ion-text>
+  <ion-button [disabled]="!registerForm.valid" expand="block" size="small" color="secondary" type="submit">Opret bruger</ion-button>
 </form>

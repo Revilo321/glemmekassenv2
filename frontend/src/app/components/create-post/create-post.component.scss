@@ -1,0 +1,88 @@
+ion-button{
+    --padding-bottom: 6px;
+    --padding-top: 6px;
+    --padding-start: 30px;
+    --padding-end: 30px;
+}
+
+ion-text{
+    font-size: 12px;
+}
+ion-datetime-button{
+    margin-bottom: 5px;
+}
+
+ion-input{
+    font-size: 12px;
+}
+
+ion-textarea{
+    font-size: 12px;
+}
+
+.container {
+  padding: 10px;
+    border: 1px dashed lightgrey;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+  }
+  
+  input[type=button] {
+    background-color: transparent;
+    border: 0;
+    border-radius: 4px;
+    padding: .5em 2em;
+  }
+  
+  #myFileInput {
+    display: none;
+  }
+  
+  .label {
+    display: block;
+    margin-top: .5em;
+  }
+
+  .switch-container{
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .image-container{
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  .image-placement{
+    display: flex;
+    justify-content: center;
+  }
+
+  ion-icon{
+    color: #D9D9D9;
+    font-size: 40px;
+  }
+
+  .image-preview {
+    position: relative;
+    display: inline-block;
+  
+    img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .delete-image-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+  p{
+    margin: 0;
+  }
+
+  .button-placement{
+    display: flex;
+    justify-content: flex-end;
+  }

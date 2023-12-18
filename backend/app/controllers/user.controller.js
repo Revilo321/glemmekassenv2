@@ -64,3 +64,12 @@ exports.getUserName = async(req, res) => {
     res.status(500).send(error.toString());
   }
 }
+
+exports.getUser = async(req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    res.json(user);
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+}
