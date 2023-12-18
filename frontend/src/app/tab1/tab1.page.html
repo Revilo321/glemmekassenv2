@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true">
+  <ion-grid>
   <app-header-page-section title="Glemmekassen" subTitle="Har du mistet noget eller måske fundet noget? Så er du kommet til det rette sted!" text="Glemmekassen er en platform hvor du har mulighed for at lede efter mistede genstande, eller finde ejermanden til fundne genstande." ></app-header-page-section>
   <app-segment-control (segmentChange)="handleSegmentChange($event)"></app-segment-control>
   <div class="searchbar-container" >
@@ -38,4 +39,5 @@
       </ion-card>
     </div>
   </ng-template>
+</ion-grid>
 </ion-content>

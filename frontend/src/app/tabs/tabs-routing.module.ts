@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/login/login.module').then(m => m.LoginPageModule)
       },
       {
+        path: 'terms-and-conditions',
+        loadChildren: () => import('../pages/terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsPageModule)
+      },
+      {
         path: 'profile',
         loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule),
         canActivate: [AuthGuard]
