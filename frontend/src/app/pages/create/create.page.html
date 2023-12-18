@@ -1,9 +1,11 @@
 <ion-content>
-  <app-header-page-section title="Tilføj et opslag"></app-header-page-section>
-  <div class="switch-container">
-    <app-segment-control
-      (segmentChange)="handleSegmentChange($event)"
-    ></app-segment-control>
-  </div>
-  <app-create-post [itemType]="itemType" />
+  <ion-grid>
+    <app-header-page-section title="Tilføj et opslag"></app-header-page-section>
+    <div class="switch-container">
+      <app-segment-control
+        (segmentChange)="handleSegmentChange($event)"
+      ></app-segment-control>
+    </div>
+    <app-create-post [itemType]="itemType" />
+  </ion-grid>
 </ion-content>

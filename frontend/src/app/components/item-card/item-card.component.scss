@@ -21,6 +21,10 @@ strong {
     color: black;
   }
 
+ion-card-content p {
+    color: #2e2e2e;
+}  
+
 ion-button{
     --padding-start: 20px;
     --padding-end: 20px;
@@ -85,4 +89,10 @@ ion-checkbox{
     --size: 20px;
     --border-width: 2px;
     --border-color: var(--ion-color-primary);
+}
+
+@media (min-width: 768px) {
+    p {
+        font-size: 14px;
+    }
 }
