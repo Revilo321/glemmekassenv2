@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { HeaderComponent } from '../components/header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { LoginComponent } from '../components/login/login.component';
@@ -14,6 +15,7 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { RouterModule } from '@angular/router';
 import { EditModalComponent } from '../components/edit-modal/edit-modal.component';
 import { CreatePostComponent } from '../components/create-post/create-post.component';
+import { ReportComponent } from '../components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { CreatePostComponent } from '../components/create-post/create-post.compo
     InfoModalComponent,
     PageNotFoundComponent,
     EditModalComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,8 @@ import { CreatePostComponent } from '../components/create-post/create-post.compo
     InfoModalComponent,
     PageNotFoundComponent,
     EditModalComponent,
-    CreatePostComponent
-  ],
+    CreatePostComponent,
+    ReportComponent
+  ]
 })
 export class SharedModule {}
