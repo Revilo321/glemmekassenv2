@@ -1,10 +1,38 @@
-<ion-content [fullscreen]="true">
-  <ion-button (click)="logOut()">
-    Log ud
-  </ion-button>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Glemmekassen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <!-- Profile Header -->
+        <ion-card-header>
+          <ion-card-subtitle>DIN PROFIL</ion-card-subtitle>
+           <ion-avatar>
+            <img src="path-to-your-image.png" />
+          </ion-avatar>
+        </ion-card-header>
+        <ion-card class="profile-header">
+          <ion-card-content>
+            <h2>Navn: {{ user.name }}</h2>
+            <h3>Tlf: +45 11 11 21 12</h3>
+            <h3>E-Mail: fornavnefternavn.dk</h3>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Log Out Button -->
+        <ion-row>
+          <ion-col size="12" class="ion-text-center ion-padding">
+            <ion-button (click)="logOut()" expand="block" shape="round">
+              Log ud
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

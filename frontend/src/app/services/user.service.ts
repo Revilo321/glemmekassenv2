@@ -41,4 +41,8 @@ export class UserService {
     return this.http.get(`${this.endpoint}/name/${uid}`);
   }
 
+  getUser(uid: string): Observable<any> {
+    console.log(uid); 
+    return this.http.get(`${this.endpoint}/${uid}`);
+  }
 }
