@@ -1,7 +1,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="12" class="ion-text-center">
+      <ion-col size="12">
         <!-- Profile Header -->
         <ion-card-header>
           <ion-card-subtitle>
@@ -32,16 +32,12 @@
         </ion-row>
 
         <ion-col>
-          <ion-card-header>
-            <ion-card-subtitle>
-              <h1>
+           <h1>
                 DINE OPSLAG
               </h1>
-              </ion-card-subtitle>
-          </ion-card-header>
-
-          <!-- List of Posts -->
-          
+          <div *ngFor="let post of posts">
+            <app-item-card (itemUpdated)="fetchItems()" [item]="post" [currentUserUid]="userID"></app-item-card>
+          </div>
         </ion-col>
       </ion-col>
     </ion-row>

@@ -45,3 +45,40 @@ exports.createItem = async (req, res) => {
     res.status(500).json({ error: error.message || 'An error occurred while creating the item.' });
   }
 };
+
+exports.findItemByUid = async (req, res) => {
+  try {
+    const items = await Item.findAll({
+      where: {userUid: req.params.uid},
+      order: [['createdAt', 'DESC']]
+    });
+    res.send(items);
+  } catch (error) {
+    console.error('Error fetching items', error);
+    res.status(500).send('An error occurred while fetching items');
+  }
+};
+
+exports.updateItem = async (req, res) => {
+  try {
+    await Item.update(req.body, {
+      where: {id: req.body.id}
+    })
+    res.status(200).send();
+  } catch (error) {
+    console.error("Error while updating items", error);
+    res.status(500).send('An error occurred while updating items');
+  }
+}
+exports.deleteItem = async (req, res) => {
+  console.log(req.params)
+  try {
+    await Item.destroy({
+      where: {id: req.params.id}
+    })
+    res.status(200).send();
+  } catch (error) {
+    console.error("Error while deleting item", error);
+    res.status(500).send('An error occurred while updating item');
+  }
+}

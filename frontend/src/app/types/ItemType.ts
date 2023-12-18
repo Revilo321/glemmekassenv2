@@ -1,5 +1,6 @@
 //TODO: Change dateTime to correct type.
 export type Item = {
+    id: number;
     title: string
     name: string;
     location: string;

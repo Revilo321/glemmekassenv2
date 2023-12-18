@@ -66,7 +66,6 @@ exports.getUserName = async(req, res) => {
 }
 
 exports.getUser = async(req, res) => {
-  console.log(req.params);
   try {
     const user = await User.findByPk(req.params.id);
     res.json(user);

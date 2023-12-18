@@ -24,8 +24,8 @@
             ><p>Kontakt</p>
           </ion-button>
           <div class="auth-options" *ngIf="isCreator">
-            <ion-icon color="primary" name="trash"></ion-icon>
-            <ion-button color="secondary" size="small" (click)="editCard()"
+            <ion-icon color="primary" (click)="presentDeleteConfirm(item.id)" name="trash"></ion-icon>
+            <ion-button color="secondary" size="small" (click)="openEditModal(item)"
               ><p>Rediger</p>
             </ion-button>
           </div>
