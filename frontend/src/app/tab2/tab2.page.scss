@@ -20,7 +20,7 @@ h3 {
 }
 
 a {
-    text-decoration: none;
+    
     font-size: 14px;
     font-weight: bold;
 
@@ -29,10 +29,27 @@ a {
 @media (min-width: 768px) {
    img {
     padding-block-start: 15px;
+    padding-inline-start: 15px;
    }
 
    a {
     font-size: 16px;
-    color: #283f5d;
+    color: #696153;
    }
+
+   .content {
+    font-size: 14px;
+    --color: #333333;
+    }
+
+    .label {
+    font-size: 14px;
+    --color: #333333;
+    }
+
+    .contactsection {
+    background-color: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    }
   }

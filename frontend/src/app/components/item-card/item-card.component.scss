@@ -90,3 +90,9 @@ ion-checkbox{
     --border-width: 2px;
     --border-color: var(--ion-color-primary);
 }
+
+@media (min-width: 768px) {
+    p {
+        font-size: 14px;
+    }
+}
