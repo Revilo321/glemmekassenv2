@@ -1,38 +1,49 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Glemmekassen</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="12">
+      <ion-col size="12" class="ion-text-center">
         <!-- Profile Header -->
         <ion-card-header>
-          <ion-card-subtitle>DIN PROFIL</ion-card-subtitle>
-           <ion-avatar>
-            <img src="path-to-your-image.png" />
-          </ion-avatar>
+          <ion-card-subtitle>
+            <h1>
+              DIN PROFIL
+            </h1>
+            </ion-card-subtitle>
         </ion-card-header>
+        <ion-avatar class="profile-avatar">
+          <img src="/frontend/src/assets/mock_user_male.png" />
+        </ion-avatar>
+        <h2 class="textleft">Kontakt info</h2>
         <ion-card class="profile-header">
-          <ion-card-content>
+          <ion-card-content class="textleft">
             <h2>Navn: {{ user.name }}</h2>
-            <h3>Tlf: +45 11 11 21 12</h3>
-            <h3>E-Mail: fornavnefternavn.dk</h3>
+            <h3>Tlf: {{ phoneNumber }}</h3>
+            <h3>E-Mail: {{ user.email }}</h3>
           </ion-card-content>
         </ion-card>
 
         <!-- Log Out Button -->
         <ion-row>
-          <ion-col size="12" class="ion-text-center ion-padding">
+          <ion-col size="12" class="ion-padding">
             <ion-button (click)="logOut()" expand="block" shape="round">
               Log ud
             </ion-button>
           </ion-col>
         </ion-row>
+
+        <ion-col>
+          <ion-card-header>
+            <ion-card-subtitle>
+              <h1>
+                DINE OPSLAG
+              </h1>
+              </ion-card-subtitle>
+          </ion-card-header>
+
+          <!-- List of Posts -->
+          
+        </ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-

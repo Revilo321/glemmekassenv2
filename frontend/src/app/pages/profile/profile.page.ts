@@ -39,8 +39,13 @@ export class ProfilePage {
   getUserByDB(uid: string){
     this.userService.getUser(uid).subscribe(user => {
       this.user = user;
-
+      this.phoneNumber = this.formatPhoneNumber(user.phone);
     })
+  }
+
+  formatPhoneNumber(phone: string): string {
+    let digits = phone.replace(/\D/g, '');
+    return digits.replace(/(\d{2})(?=\d)/g, '$1 ');
   }
 
 }
