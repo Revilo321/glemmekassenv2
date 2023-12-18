@@ -121,11 +121,19 @@
     <!-- LINK SECTION -->
     <ion-row class="ion-padding-top">
       <ion-col size="12">
-        <app-header-page-section 
-          title="Praktiske links">
-        </app-header-page-section>
-
-         <!-- Links for Terms and Conditions and Fraud should be added here, once everything is merged in main -->
+        <div class="ion-text-center">
+          <app-header-page-section 
+            title="Praktiske links">
+          </app-header-page-section>
+        </div>
+        <div class="extra-links">
+          <ion-row class="ion-justify-content-center">
+            <a [routerLink]="'tabs/terms-and-conditions'">Regler og vilkår</a>
+          </ion-row>
+          <ion-row class="ion-justify-content-center"> 
+            <a [routerLink]="'tabs/report'">Anmeld svindel</a>
+          </ion-row>
+        </div>
       </ion-col>
     </ion-row>
 
