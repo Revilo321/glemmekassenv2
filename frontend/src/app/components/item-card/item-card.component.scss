@@ -1,6 +1,12 @@
 img {
-    height: 100%;
+   min-height: 100%;
     object-fit: cover;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 ion-card {
@@ -11,6 +17,7 @@ ion-card {
     background-color: #EFEFEF;
     height: 100%;
     max-height: fit-content;
+    position: relative;
 }
 
 p{
@@ -41,6 +48,7 @@ ion-card-title{
     text-transform: uppercase;
     color: var(--ion-color-primary);
     font-weight: 900;
+    padding-bottom: 5px;
 }
 
 ion-card-content{
@@ -92,7 +100,17 @@ ion-checkbox{
 }
 
 @media (min-width: 768px) {
+    ion-card-title {
+        font-size: 16px;
+    }
+
     p {
-        font-size: 14px;
+        font-size: 15px;
+    }
+
+    .button-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 }
