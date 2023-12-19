@@ -121,9 +121,7 @@ export class CreatePostComponent {
       const formData = this.createForm.value;
       formData.uid = this.userObject.uid;
       formData.name = this.userObject.displayName;
-      formData.itemType = this.itemType;
       
-
       if (this.selectedFile) {
         this.authService.uploadFile(this.selectedFile).subscribe({
           next: (imageUrl) => {
@@ -132,6 +130,7 @@ export class CreatePostComponent {
               formData.id = this.editData.id;
               this.updateItem(formData);
             } else {
+              formData.itemType = this.itemType;
               this.createItem(formData);
             }
           },
@@ -144,6 +143,7 @@ export class CreatePostComponent {
           formData.id = this.editData.id;
           this.updateItem(formData);
         } else {
+          formData.itemType = this.itemType;
           this.createItem(formData);
         }
       }

@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card [ngClass]="{'card-color': changeColorIfCreator}">
   <ion-grid class="ion-no-padding">
     <ion-row>
       <ion-col size="4">
@@ -11,7 +11,7 @@
         </div>
         <ion-card-content class="ion-no-padding">
           <ion-card-title> {{item.title}} </ion-card-title>
-          <p><strong>{{item.itemType === 'found' ? 'Fundet af' : 'Mistet af'}}</strong> {{item.name}}</p>
+          <p><strong>{{item.itemType === 'found' ? 'Fundet af' : 'Mistet af'}}</strong> {{ changeColorIfCreator ? 'Dig' : item.name}} </p>
           <p><strong>Lokation:</strong> {{item.location}} </p>
           <p><strong>Dato og tid:</strong> {{item.dateTime | date:'dd-MM-yy - HH:mm'}} </p>
           <p><strong>Beskrivelse:</strong></p>
@@ -20,7 +20,7 @@
           </p>
         </ion-card-content>
         <div class="button-container">
-          <ion-button (click)="gotoChat(item.userUid!)" *ngIf="!isCreator" color="secondary" size="small"
+          <ion-button (click)="gotoChat(item.userUid!)" *ngIf="!changeColorIfCreator" color="secondary" size="small"
             ><p>Kontakt</p>
           </ion-button>
           <div class="auth-options" *ngIf="isCreator">

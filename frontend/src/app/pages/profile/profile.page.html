@@ -11,7 +11,7 @@
             </ion-card-subtitle>
         </ion-card-header>
         <ion-avatar class="profile-avatar">
-          <img src="/frontend/src/assets/mock_user_male.png" />
+          <img src="../../../assets/mock_user_male.png" />
         </ion-avatar>
         <h2 class="textleft">Kontakt info</h2>
         <ion-card class="profile-header">
@@ -36,7 +36,7 @@
                 DINE OPSLAG
               </h1>
           <div *ngFor="let post of posts">
-            <app-item-card (itemUpdated)="fetchItems()" [item]="post" [currentUserUid]="userID"></app-item-card>
+            <app-item-card (itemUpdated)="fetchItems()" [item]="post" [currentUserUid2]="userID" [currentUserUid]="userID"></app-item-card>
           </div>
         </ion-col>
       </ion-col>

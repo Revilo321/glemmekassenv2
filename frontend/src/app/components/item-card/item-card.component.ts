@@ -13,8 +13,10 @@ import { ItemService } from 'src/app/services/item.service';
 export class ItemCardComponent implements OnInit {
   isCheckedOut: boolean = false;
   isCreator: boolean = false;
+  changeColorIfCreator: boolean = false;
   @Output() itemUpdated = new EventEmitter<void>();
   @Input() currentUserUid: string = '';
+  @Input() currentUserUid2: string = '';
   @Input() item: Item = {
     id: 1,
     title: 'Hund',
@@ -28,6 +30,10 @@ export class ItemCardComponent implements OnInit {
     this.currentUserUid === this.item.userUid
       ? (this.isCreator = true)
       : (this.isCreator = false);
+
+      this.currentUserUid2 === this.item.userUid
+      ? (this.changeColorIfCreator = true)
+      : (this.changeColorIfCreator = false);
   }
 
   toggleCheckout(event: any) {
