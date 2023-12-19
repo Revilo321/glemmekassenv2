@@ -13,7 +13,7 @@
   </div>
   <ng-container *ngIf="!isLoading; else loadingSkeletons">
     <div class="card-container" *ngFor="let item of filteredItems">
-      <app-item-card [currentUserUid2]="currentUser!.uid" [item]="item"></app-item-card>
+      <app-item-card [currentUserUid2]="currentUser?.uid!" [item]="item"></app-item-card>
     </div>
   </ng-container>
 
