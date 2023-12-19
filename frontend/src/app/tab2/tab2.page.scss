@@ -13,6 +13,12 @@ a {
     color: #696153;
 }
 
+.contactsection {
+    background-color: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    }
+
 @media (min-width: 768px) {
    img {
     padding-block-start: 15px;
@@ -34,9 +40,5 @@ a {
     --color: #333333;
     }
 
-    .contactsection {
-    background-color: #EFEFEF;
-    display: flex;
-    justify-content: center;
-    }
+   
   }
