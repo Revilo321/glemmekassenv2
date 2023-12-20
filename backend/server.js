@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const server = http.createServer(app)
 const { Server } = require('socket.io')
+require('dotenv').config();
 
 const io = new Server(server, {
   cors: {
@@ -15,7 +16,7 @@ const io = new Server(server, {
 
 const PORT = process.env.PORT || 8080
 
-const db = require('./app/models')
+const db = require('./app/models');
 db.sequelize.sync()
 app.use(cors())
 app.use(express.json())
